@@ -24,6 +24,7 @@ export default function Navigation() {
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/allplaydates" linkText="All Playdates" />
           <NavbarItem path="/other" linkText="Other" />
+          <NavbarItem path="/playdateForm" linkText="Playdate_Form" />
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
