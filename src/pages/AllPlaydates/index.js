@@ -1,13 +1,48 @@
-import React from "react";
-import { Button } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Container, Button, Col, Row, Card } from "react-bootstrap";
 import { Next } from "react-bootstrap/esm/PageItem";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import HomepageCompo from "../../components/HomepageCompo";
-import { selectToken } from "../../store/user/selectors";
 
-import "./allPlaydates.css";
+import { selectPlaydates } from "../../store/playdate/selectors";
+
+import PlaydateCard from "../../components/AllPlaydates";
+import { fetchPlaydates } from "../../store/playdate/actions";
+
+import "./AllPlaydates.css";
 
 export default function AllPlaydates() {
-  return <div>This is the page with all Playdates.</div>;
+  const dispatch = useDispatch();
+  const playdates = useSelector(selectPlaydates);
+console.log("playdates: ",playdates);
+//   useEffect(() => {
+//     dispatch(fetchPlaydates);
+//   }, [dispatch]);
+
+  return (
+    <Container>
+      <Row>
+        <Col sm={2}>
+          <Card className="mt-5" bg="light">
+            <Card.Header>
+              <b>Find Playdate</b>
+            </Card.Header>
+            <Card.Body>
+              <Row>
+                <b>Filter by:</b>
+                ...
+              </Row>
+              <Row>
+                <b>Order by:</b>
+                ...
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col sm={8}>
+          <PlaydateCard />
+        </Col>
+      </Row>
+    </Container>
+  );
 }
