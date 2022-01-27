@@ -8,11 +8,11 @@ import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import PlaydateForm from "./components/PlaydateForm";
+import AllPlaydates from "./pages/AllPlaydates";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
-import { Jumbotron } from "react-bootstrap";
 import Homepage from "./pages/Homepage";
 
 import "./App.css";
@@ -36,6 +36,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/playdateForm" element={<PlaydateForm />} />
+        <Route path="/allplaydates" element={<AllPlaydates />} />
+
       </Routes>
     </div>
   );
