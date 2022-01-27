@@ -1,7 +1,7 @@
 import { FETCH_PLAYDATES_SUCCESS } from "./actions";
 
 const initialState = {
-    allPlaydates: []
+    allPlaydates: [],
   };
 
 // eslint-disable-next-line import/no-anonymous-default-export
