@@ -1,10 +1,29 @@
-import { Container, Form, Image, Col, Row, Card } from "react-bootstrap";
+import {
+  Container,
+  Form,
+  Image,
+  Col,
+  Row,
+  Card,
+  Button,
+} from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 import topImg from "../../images/playdate1.jpg";
 
 export default function PlaydateForm() {
   const [imageUrl, setImageUrl] = useState("");
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [address, setAddress] = useState("");
+  const [description, setDescription] = useState("");
+
+  function submitForm(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
       {/* <div>
@@ -30,42 +49,62 @@ export default function PlaydateForm() {
         />
         <Card.Header
           className="text-center"
-          style={{ fontWeight: "bold", fontSize: "25px" }}
+          style={{ fontWeight: "bold", fontSize: "30px", fontStyle: "italic" }}
         >
           Let's have a Playdate
         </Card.Header>
         <Card.Body>
-          <Form>
+          <Form onSubmit={submitForm}>
             <Row className="mb-3">
               <Col>
                 <Form.Group className="mb-3" controlId="formGridName">
                   <Form.Label>Playdate Name</Form.Label>
                   <Form.Control
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     type="text"
                     placeholder="What you wanna call to your playdate"
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGridDate">
                   <Form.Label>Choose Date</Form.Label>
-                  <Form.Control type="date" required />
+                  <Form.Control
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    type="date"
+                    required
+                  />
                 </Form.Group>
                 <Row className="mb-3">
                   <Col>
                     <Form.Group controlId="formGridStartTime">
                       <Form.Label>Choose Start Time</Form.Label>
-                      <Form.Control type="time" required />
+                      <Form.Control
+                        value={startTime}
+                        onChange={(e) => setStartTime(e.target.value)}
+                        type="time"
+                        required
+                      />
                     </Form.Group>
                   </Col>
                   <Col>
                     <Form.Group controlId="formGridEndTime">
                       <Form.Label>Choose End Time</Form.Label>
-                      <Form.Control type="time" />
+                      <Form.Control
+                        type="time"
+                        value={endTime}
+                        onChange={(e) => setEndTime(e.target.value)}
+                      />
                     </Form.Group>
                   </Col>
                 </Row>
                 <Form.Group controlId="formGridAddress">
                   <Form.Label>Address</Form.Label>
-                  <Form.Control type="text" />
+                  <Form.Control
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
                 </Form.Group>
               </Col>
               <Col>
@@ -77,6 +116,8 @@ export default function PlaydateForm() {
                       </Form.Label>
 
                       <Form.Control
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
                         type="text"
                         placeholder="Paste imageUrl here"
                       />
@@ -91,10 +132,31 @@ export default function PlaydateForm() {
                 </Row>
                 <Form.Group controlId="formGridDiscription">
                   <Form.Label>Description</Form.Label>
-                  <Form.Control type="text" as="textarea" />
+                  <Form.Control
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    type="text"
+                    as="textarea"
+                  />
                 </Form.Group>
               </Col>
             </Row>
+            <Form.Group>
+              <Button
+                className="mt-5"
+                type="submit"
+                // variant="outline-danger"
+                style={{
+                  backgroundColor: "#F25278",
+                  color: "black",
+                  alignSelf: "center",
+                  marginLeft: "40%",
+                  fontSize: "20px",
+                }}
+              >
+                Create a playdate
+              </Button>
+            </Form.Group>
           </Form>
         </Card.Body>
       </Card>
