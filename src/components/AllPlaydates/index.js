@@ -10,17 +10,17 @@ import {
 } from "react-bootstrap";
 import { Link, Router } from "react-router-dom";
 
-export default function PlaydateCard() {
+export default function PlaydateCard(playdate) {
   return (
     <Container>
       <Card className="mt-5" bg="light">
         <Card.Header>
           <Row>
             <Col md={4}>
-              <b>PLAYDATE NAME</b>
+              <b>{playdate.playdateName}</b>
             </Col>
             <Col md={{ span: 4, offset: 4 }} style={{ textAlign: "right" }}>
-              <b>PLAYDATE DATE</b>
+              <b>{playdate.date}</b>
             </Col>
           </Row>
         </Card.Header>
@@ -30,9 +30,7 @@ export default function PlaydateCard() {
           </Col>
           <Col md={9}>
             <Card.Body>
-              <Card.Text>
-                Short description...
-              </Card.Text>
+              <Card.Text>{playdate.description}</Card.Text>
             </Card.Body>
           </Col>
         </Row>
@@ -40,11 +38,11 @@ export default function PlaydateCard() {
         <Card.Footer>
           <Row>
             <Col md={4} className="text-muted">
-              Created by: <b >PARENT NAME</b>
+              Created by: <b>PARENT NAME</b>
             </Col>
             <Col md={{ span: 4, offset: 4 }} style={{ textAlign: "right" }}>
-              <Link to="/playdates/ID">
-                <Button >Read more</Button>
+              <Link to={`/playdates/${playdate.id}`}>
+                <Button>Read more</Button>
               </Link>
             </Col>
           </Row>

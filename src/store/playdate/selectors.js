@@ -1,1 +1,1 @@
-export const selectPlaydates = (state) => state.allPlaydates;
+export const selectPlaydates = (state) => state.playdate.allPlaydates;

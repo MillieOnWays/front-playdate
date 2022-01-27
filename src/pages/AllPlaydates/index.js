@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Button, Col, Row, Card } from "react-bootstrap";
-import { Next } from "react-bootstrap/esm/PageItem";
-import { Link } from "react-router-dom";
+//import { Next } from "react-bootstrap/esm/PageItem";
+//import { Link } from "react-router-dom";
 
 import { selectPlaydates } from "../../store/playdate/selectors";
 
@@ -14,10 +14,10 @@ import "./AllPlaydates.css";
 export default function AllPlaydates() {
   const dispatch = useDispatch();
   const playdates = useSelector(selectPlaydates);
-console.log("playdates: ",playdates);
-//   useEffect(() => {
-//     dispatch(fetchPlaydates);
-//   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchPlaydates());
+  }, [dispatch]);
 
   return (
     <Container>
@@ -40,7 +40,17 @@ console.log("playdates: ",playdates);
           </Card>
         </Col>
         <Col sm={8}>
-          <PlaydateCard />
+          {playdates.map((playdate) => {
+            return (
+              <PlaydateCard
+                key={playdate.id}
+                id={playdate.id}
+                playdateName={playdate.name}
+                description={playdate.description}
+                date={playdate.date}
+              />
+            );
+          })}
         </Col>
       </Row>
     </Container>
