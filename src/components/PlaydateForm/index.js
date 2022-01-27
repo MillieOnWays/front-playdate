@@ -18,8 +18,12 @@ export default function PlaydateForm() {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [tag, setTag] = useState("");
   const [description, setDescription] = useState("");
 
+  const dateStartTime = `${date} ${startTime}`;
+  const dateEndTime = `${date} ${endTime}`;
   function submitForm(e) {
     e.preventDefault();
   }
@@ -30,7 +34,7 @@ export default function PlaydateForm() {
         <Image src={topImg} alt="playdate image" />
       </div> */}
       <Card
-        className="mt-5"
+        className="mt-5 mb-5"
         style={{
           width: "70rem",
           backgroundColor: "#FFB6C1",
@@ -38,7 +42,6 @@ export default function PlaydateForm() {
           //   backgroundSize: "",
           alignSelf: "center",
           marginLeft: "17%",
-
           borderWidth: "5px",
         }}
       >
@@ -64,6 +67,7 @@ export default function PlaydateForm() {
                     onChange={(e) => setName(e.target.value)}
                     type="text"
                     placeholder="What you wanna call to your playdate"
+                    required
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGridDate">
@@ -94,6 +98,7 @@ export default function PlaydateForm() {
                         type="time"
                         value={endTime}
                         onChange={(e) => setEndTime(e.target.value)}
+                        required
                       />
                     </Form.Group>
                   </Col>
@@ -104,6 +109,16 @@ export default function PlaydateForm() {
                     type="text"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+                <Form.Group controlId="formGridCity">
+                  <Form.Label>City</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    required
                   />
                 </Form.Group>
               </Col>
@@ -130,20 +145,32 @@ export default function PlaydateForm() {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Form.Group controlId="formGridDiscription">
+                <Form.Group controlId="formGridTag">
+                  <Form.Label>Tag</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={tag}
+                    onChange={(e) => setTag(e.target.value)}
+                    placeholder="give tag e.g. park / water"
+                    required
+                  />
+                </Form.Group>
+                <Form.Group className="mt-4" controlId="formGridDiscription">
                   <Form.Label>Description</Form.Label>
                   <Form.Control
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     type="text"
                     as="textarea"
+                    placeholder="please describe more about playdate here"
+                    required
                   />
                 </Form.Group>
               </Col>
             </Row>
             <Form.Group>
               <Button
-                className="mt-5"
+                className="mt-3"
                 type="submit"
                 // variant="outline-danger"
                 style={{
