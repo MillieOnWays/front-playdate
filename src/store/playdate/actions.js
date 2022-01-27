@@ -14,7 +14,7 @@ export const fetchPlaydatesSuccess = (playdates) => ({
   payload: playdates,
 });
 
-export const fetchTrainers = () => {
+export const fetchPlaydates = () => {
   return async (dispatch, getState) => {
     try {
       const playdatesCount = getState().playdates.allPlaydates.length;
