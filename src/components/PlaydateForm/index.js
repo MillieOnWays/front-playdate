@@ -7,11 +7,17 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-
+import { newPlaydate } from "../../store/playdate/actions";
+import { useNavigate } from "react-router-dom";
 import topImg from "../../images/playdate1.jpg";
 
 export default function PlaydateForm() {
+<<<<<<< HEAD
+=======
+  const navigate = useNavigate();
+>>>>>>> 85c31549d69bb454d2a167879af82eaabfab5366
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -24,8 +30,24 @@ export default function PlaydateForm() {
 
   const dateStartTime = `${date} ${startTime}`;
   const dateEndTime = `${date} ${endTime}`;
+  const dispatch = useDispatch();
+
   function submitForm(e) {
     e.preventDefault();
+    dispatch(
+      newPlaydate(
+        name,
+        date,
+        dateStartTime,
+        dateEndTime,
+        address,
+        city,
+        image,
+        tag,
+        description
+      )
+    );
+    navigate("/allplaydates")
   }
 
   return (

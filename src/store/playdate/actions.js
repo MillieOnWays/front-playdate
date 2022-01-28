@@ -1,4 +1,5 @@
 import { apiUrl, DEFAULT_PAGINATION_LIMIT } from "../../config/constants";
+import { selectUser } from "../user/selectors";
 import axios from "axios";
 import {
   appLoading,
@@ -17,6 +18,18 @@ export const fetchPlaydatesSuccess = (playdates) => {
   };
 };
 
+export const fetchPlaydateDetailsSuccess = (details) => ({
+  type: PLAYDATE_DETAILS_FETCHED,
+  payload: details,
+});
+
+// export const addNewPlaydate = (newPlaydate) => {
+//   return {
+//     type: "ADD_NEW_PLAYDATE",
+//     payload: newPlaydate,
+//   };
+// };
+
 export const fetchPlaydates = () => {
   return async (dispatch, getState) => {
     try {
@@ -31,10 +44,36 @@ export const fetchPlaydates = () => {
   };
 };
 
-const fetchPlaydateDetailsSuccess = (details) => ({
-  type: PLAYDATE_DETAILS_FETCHED,
-  payload: details,
-});
+export const newPlaydate = (
+  name,
+  date,
+  startTime,
+  endTime,
+  address,
+  city,
+  image,
+  tag,
+  description
+) => {
+  return async (dispatch, getState) => {
+    try {
+      const { id } = selectUser(getState());
+      const res = await axios.post(`${apiUrl}/playdates/${id}`, {
+        name,
+        date,
+        startTime,
+        endTime,
+        address,
+        city,
+        image,
+        tag,
+        description,
+      });
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
 
 export const fetchPlaydateDetails = (id) => {
   return async (dispatch, getState) => {

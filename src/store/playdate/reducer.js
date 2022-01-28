@@ -13,7 +13,11 @@ export default (state = initialState, action) => {
         ...state,
         allPlaydates: [...state.allPlaydates, ...action.payload],
       };
-
+    case PLAYDATE_DETAILS_FETCHED:
+      return {
+        ...state,
+        details: action.payload,
+      };
     default:
       return state;
   }
