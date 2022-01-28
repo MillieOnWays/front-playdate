@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container, Col, Row, Card, Form, FormGroup } from "react-bootstrap";
 //import { Next } from "react-bootstrap/esm/PageItem";
 //import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router";
 import { selectPlaydates } from "../../store/playdate/selectors";
+import { selectToken } from "../../store/user/selectors";
 
 import PlaydateCard from "../../components/AllPlaydates";
 import { fetchPlaydates } from "../../store/playdate/actions";
@@ -12,12 +13,17 @@ import { fetchPlaydates } from "../../store/playdate/actions";
 import "./AllPlaydates.css";
 
 export default function AllPlaydates() {
+  const navigate = useNavigate();
+  const token = useSelector(selectToken);
   const dispatch = useDispatch();
   const playdates = useSelector(selectPlaydates);
 
   useEffect(() => {
+    if (token === null) {
+      navigate("/");
+    }
     dispatch(fetchPlaydates());
-  }, [dispatch]);
+  }, [dispatch, token, navigate]);
 
   return (
     <Container>
