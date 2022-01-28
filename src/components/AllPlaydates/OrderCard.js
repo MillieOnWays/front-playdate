@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { Button, Col, Container, Row, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -8,6 +9,9 @@ export default function OrderCard(playdate) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  const [order, setOrder] = useState("DESC");
+  const [orderBy, setOrderBy] = useState("id");
+
   return (
     <Card className="mt-5" bg="light">
       <Card.Header>
@@ -16,16 +20,12 @@ export default function OrderCard(playdate) {
       <Card.Body>
         <Form>
           <Form.Group controlId="formBasicSelect">
-            <Form.Control
-              as="select"
-              //value="something"
-              //onChange={}
-            >
+            <Form.Control as="select" value={order} onChange={setOrder}>
               <option value="latest">Latest</option>
               {/* <option value="title">Title</option>
-                      <option value="parent">Parent</option>
-                      <option value="city">City</option>
-                      <option value="date">Date</option> */}
+              <option value="parent">Parent</option>
+              <option value="city">City</option>
+              <option value="date">Date</option> */}
             </Form.Control>
           </Form.Group>
         </Form>
