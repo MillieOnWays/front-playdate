@@ -99,6 +99,8 @@ export default function AllPlaydates() {
                 tag={playdate.tag}
                 creatorName={playdate.user.name}
                 creatorAvatar={playdate.user.avatar}
+                createdAt={playdate.createdAt}
+                image={playdate.image}
               />
             );
           })}
