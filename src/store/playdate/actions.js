@@ -18,12 +18,17 @@ export const fetchPlaydatesSuccess = (playdates) => {
   };
 };
 
-export const addNewPlaydate = (newPlaydate) => {
-  return {
-    type: "ADD_NEW_PLAYDATE",
-    payload: newPlaydate,
-  };
-};
+export const fetchPlaydateDetailsSuccess = (details) => ({
+  type: PLAYDATE_DETAILS_FETCHED,
+  payload: details,
+});
+
+// export const addNewPlaydate = (newPlaydate) => {
+//   return {
+//     type: "ADD_NEW_PLAYDATE",
+//     payload: newPlaydate,
+//   };
+// };
 
 export const fetchPlaydates = () => {
   return async (dispatch, getState) => {
@@ -38,7 +43,6 @@ export const fetchPlaydates = () => {
     }
   };
 };
-
 
 export const newPlaydate = (
   name,
@@ -65,20 +69,17 @@ export const newPlaydate = (
         tag,
         description,
       });
-      console.log("New playdate info: ", res);
-      dispatch(addNewPlaydate(res.data));
-
-const fetchPlaydateDetailsSuccess = (details) => ({
-  type: PLAYDATE_DETAILS_FETCHED,
-  payload: details,
-});
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
 
 export const fetchPlaydateDetails = (id) => {
   return async (dispatch, getState) => {
     try {
       const response = await axios.get(`${apiUrl}/playdates/${id}`);
       dispatch(fetchPlaydateDetailsSuccess(response.data));
-
     } catch (e) {
       console.log(e.message);
     }

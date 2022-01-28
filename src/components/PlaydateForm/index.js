@@ -10,10 +10,11 @@ import {
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { newPlaydate } from "../../store/playdate/actions";
-
+import { useNavigate } from "react-router-dom";
 import topImg from "../../images/playdate1.jpg";
 
 export default function PlaydateForm() {
+  const navigate = useNavigate();
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -43,6 +44,7 @@ export default function PlaydateForm() {
         description
       )
     );
+    navigate("/allplaydates")
   }
 
   return (
