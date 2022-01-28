@@ -14,10 +14,8 @@ import { useNavigate } from "react-router-dom";
 import topImg from "../../images/playdate1.jpg";
 
 export default function PlaydateForm() {
-<<<<<<< HEAD
-=======
   const navigate = useNavigate();
->>>>>>> 85c31549d69bb454d2a167879af82eaabfab5366
+
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -47,7 +45,7 @@ export default function PlaydateForm() {
         description
       )
     );
-    navigate("/allplaydates")
+    navigate("/allplaydates");
   }
 
   return (
