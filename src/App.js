@@ -15,6 +15,7 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import Homepage from "./pages/Homepage";
 
 import "./App.css";
+import PlaydateDetails from "./pages/PlaydateDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/allplaydates" element={<AllPlaydates />} />
+        <Route path="/playdates/:id" element={<PlaydateDetails />} />
       </Routes>
     </div>
   );
