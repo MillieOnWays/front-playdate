@@ -23,19 +23,14 @@ export const fetchPlaydateDetailsSuccess = (details) => ({
   payload: details,
 });
 
-// export const addNewPlaydate = (newPlaydate) => {
-//   return {
-//     type: "ADD_NEW_PLAYDATE",
-//     payload: newPlaydate,
-//   };
-// };
-
-export const fetchPlaydates = () => {
+export const fetchPlaydates = (ord, ordBy) => {
   return async (dispatch, getState) => {
     try {
       const playdatesCount = getState().playdate.allPlaydates.length;
+      const order = ord ? ord : `DESC`;
+      const orderBy = ordBy ? ordBy : `id`;
       const response = await axios.get(
-        `${apiUrl}/playdates?limit=${DEFAULT_PAGINATION_LIMIT}&offset=${playdatesCount}&order=ASC`
+        `${apiUrl}/playdates?limit=${DEFAULT_PAGINATION_LIMIT}&offset=${playdatesCount}&order=${order}&by=${orderBy}`
       );
       dispatch(fetchPlaydatesSuccess(response.data.playdates.rows));
     } catch (e) {
