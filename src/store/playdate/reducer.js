@@ -1,19 +1,25 @@
 import { FETCH_PLAYDATES_SUCCESS } from "./actions";
+import { PLAYDATE_DETAILS_FETCHED } from "./actions";
 
 const initialState = {
-    allPlaydates: [],
-  };
+  allPlaydates: [],
+};
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
-    switch (action.type) {
-      case FETCH_PLAYDATES_SUCCESS:
-        return {
-            ...state,
-            allPlaydates: action.payload,
-          };
-    
-      default:
-        return state;
-    }
-  };
+  switch (action.type) {
+    case FETCH_PLAYDATES_SUCCESS:
+      return {
+        ...state,
+        allPlaydates: action.payload,
+      };
+    case PLAYDATE_DETAILS_FETCHED:
+      return {
+        ...state,
+        details: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
