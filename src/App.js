@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import PlaydateForm from "./components/PlaydateForm";
 import AllPlaydates from "./pages/AllPlaydates";
+import PlaydateDetails from "./pages/PlaydateDetails";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -37,7 +38,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/playdateForm" element={<PlaydateForm />} />
         <Route path="/allplaydates" element={<AllPlaydates />} />
-
+        <Route path="/playdates/:id" element={<PlaydateDetails />} />
       </Routes>
     </div>
   );

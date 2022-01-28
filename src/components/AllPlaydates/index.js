@@ -1,26 +1,23 @@
 import React from "react";
-import {
-  Button,
-  Col,
-  Container,
-  Form,
-  Row,
-  Table,
-  Card,
-} from "react-bootstrap";
-import { Link, Router } from "react-router-dom";
+import { Button, Col, Container, Row, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function PlaydateCard(playdate) {
+
+  function firstLetterUpperCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <Container>
       <Card className="mt-5" bg="light">
         <Card.Header>
           <Row>
             <Col md={4}>
-              <b>{playdate.playdateName}</b>
+              <b>{firstLetterUpperCase(playdate.playdateName)}</b>
             </Col>
-            <Col md={{ span: 4, offset: 4 }} style={{ textAlign: "right" }}>
-              <b>{playdate.date}</b>
+            <Col md={{ span: 7, offset: 1 }} style={{ textAlign: "right" }}>
+            ➤ <b>{playdate.city}{", "}{playdate.date}</b>
             </Col>
           </Row>
         </Card.Header>
@@ -30,15 +27,15 @@ export default function PlaydateCard(playdate) {
           </Col>
           <Col md={9}>
             <Card.Body>
-              <Card.Text>{playdate.description}</Card.Text>
+              <Card.Text>{firstLetterUpperCase(playdate.description)}</Card.Text>
             </Card.Body>
           </Col>
         </Row>
 
         <Card.Footer>
           <Row>
-            <Col md={4} className="text-muted">
-              Created by: <b>PARENT NAME</b>
+            <Col className="text-muted">
+              Created by: <b>{firstLetterUpperCase(playdate.creatorName)}</b>
             </Col>
             <Col md={{ span: 4, offset: 4 }} style={{ textAlign: "right" }}>
               <Link to={`/playdates/${playdate.id}`}>

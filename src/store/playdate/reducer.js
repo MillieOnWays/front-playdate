@@ -1,4 +1,5 @@
 import { FETCH_PLAYDATES_SUCCESS } from "./actions";
+import { PLAYDATE_DETAILS_FETCHED } from "./actions";
 
 const initialState = {
   allPlaydates: [],
@@ -10,15 +11,13 @@ export default (state = initialState, action) => {
     case FETCH_PLAYDATES_SUCCESS:
       return {
         ...state,
-        allPlaydates: action.payload,
+        allPlaydates: [...state.allPlaydates, ...action.payload],
       };
-
-    case "ADD_NEW_PLAYDATE": {
+    case PLAYDATE_DETAILS_FETCHED:
       return {
         ...state,
-        allPlaydates: [...state.allPlaydates, action.payload],
+        details: action.payload,
       };
-    }
 
     default:
       return state;

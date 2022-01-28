@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Button, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row, Card, Form, FormGroup } from "react-bootstrap";
 //import { Next } from "react-bootstrap/esm/PageItem";
 //import { Link } from "react-router-dom";
 
@@ -29,12 +29,59 @@ export default function AllPlaydates() {
             </Card.Header>
             <Card.Body>
               <Row>
-                <b>Filter by:</b>
-                ...
+                <Form>
+                  <Form.Group controlId="formBasicSelect">
+                    <Form.Label>
+                      <b>Order by:</b>
+                    </Form.Label>
+                    <Form.Control
+                      as="select"
+                      value="something"
+                      //onChange={}
+                    >
+                      <option value="latest">Latest</option>
+                      {/* <option value="title">Title</option>
+                      <option value="parent">Parent</option>
+                      <option value="city">City</option>
+                      <option value="date">Date</option> */}
+                    </Form.Control>
+                  </Form.Group>
+                </Form>
               </Row>
-              <Row>
-                <b>Order by:</b>
-                ...
+              <Row className="mt-3">
+                <Form>
+                  <Form.Group controlId="formBasicSelect">
+                    <Form.Label>
+                      <b>Filter by:</b>
+                    </Form.Label>
+                    <br />
+                    <Form.Control
+                      as="select"
+                      value="something"
+                      //onChange={}
+                    >
+                      <option value="all">All cities</option>
+                      {/* <option value="almere">Almere</option>
+                      <option value="amsterdam">Amsterdam</option> */}
+                    </Form.Control>
+                    <br />
+                    <Form.Control
+                      as="select"
+                      value="something"
+                      //onChange={}
+                    >
+                      <option value="all">All Dates</option>
+                    </Form.Control>
+                    <br />
+                    <Form.Control
+                      as="select"
+                      value="something"
+                      //onChange={}
+                    >
+                      <option value="all">All Start Times</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Form>
               </Row>
             </Card.Body>
           </Card>
@@ -48,6 +95,10 @@ export default function AllPlaydates() {
                 playdateName={playdate.name}
                 description={playdate.description}
                 date={playdate.date}
+                city={playdate.city}
+                tag={playdate.tag}
+                creatorName={playdate.user.name}
+                creatorAvatar={playdate.user.avatar}
               />
             );
           })}
