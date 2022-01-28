@@ -8,6 +8,7 @@ import {
 } from "../appState/actions";
 
 export const FETCH_PLAYDATES_SUCCESS = "FETCH_PLAYDATES_SUCCESS";
+export const PLAYDATE_DETAILS_FETCHED = "PLAYDATE_DETAILS_FETCHED";
 
 export const fetchPlaydatesSuccess = (playdates) => {
   return {
@@ -24,6 +25,22 @@ export const fetchPlaydates = () => {
         `${apiUrl}/playdates?limit=${DEFAULT_PAGINATION_LIMIT}&offset=${playdatesCount}&order=ASC`
       );
       dispatch(fetchPlaydatesSuccess(response.data.playdates.rows));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
+
+const fetchPlaydateDetailsSuccess = (details) => ({
+  type: PLAYDATE_DETAILS_FETCHED,
+  payload: details,
+});
+
+export const fetchPlaydateDetails = (id) => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await axios.get(`${apiUrl}/playdates/${id}`);
+      dispatch(fetchPlaydateDetailsSuccess(response.data));
     } catch (e) {
       console.log(e.message);
     }

@@ -1,4 +1,5 @@
 import { FETCH_PLAYDATES_SUCCESS } from "./actions";
+import { PLAYDATE_DETAILS_FETCHED } from "./actions";
 
 const initialState = {
   allPlaydates: [],
