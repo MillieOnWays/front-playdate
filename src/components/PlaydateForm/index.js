@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import topImg from "../../images/playdate1.jpg";
 
 export default function PlaydateForm() {
-  const [imageUrl, setImageUrl] = useState("");
+  const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -131,8 +131,8 @@ export default function PlaydateForm() {
                       </Form.Label>
 
                       <Form.Control
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
+                        value={image}
+                        onChange={(e) => setImage(e.target.value)}
                         type="text"
                         placeholder="Paste imageUrl here"
                       />
@@ -141,7 +141,7 @@ export default function PlaydateForm() {
                   <Col>
                     <Form.Group className="mt-4">
                       <Form.Label> </Form.Label>
-                      <Image src={imageUrl} alt="preview" thumbnail />
+                      <Image src={image} alt="preview" thumbnail />
                     </Form.Group>
                   </Col>
                 </Row>
