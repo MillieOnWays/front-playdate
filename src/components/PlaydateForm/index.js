@@ -7,6 +7,7 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
+import moment from "moment";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { newPlaydate } from "../../store/playdate/actions";
@@ -25,6 +26,7 @@ export default function PlaydateForm() {
   const [city, setCity] = useState("");
   const [tag, setTag] = useState("");
   const [description, setDescription] = useState("");
+  const [validated, setValidated] = useState(false);
 
   const dateStartTime = `${date} ${startTime}`;
   const dateEndTime = `${date} ${endTime}`;
@@ -86,6 +88,7 @@ export default function PlaydateForm() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     type="text"
+                    maxLength={50}
                     placeholder="What you wanna call to your playdate"
                     required
                   />
@@ -94,6 +97,7 @@ export default function PlaydateForm() {
                   <Form.Label>Choose Date</Form.Label>
                   <Form.Control
                     value={date}
+                    min={new Date().toISOString().split("T")[0]}
                     onChange={(e) => setDate(e.target.value)}
                     type="date"
                     required
@@ -118,7 +122,6 @@ export default function PlaydateForm() {
                         type="time"
                         value={endTime}
                         onChange={(e) => setEndTime(e.target.value)}
-                        required
                       />
                     </Form.Group>
                   </Col>
@@ -127,6 +130,7 @@ export default function PlaydateForm() {
                   <Form.Label>Address</Form.Label>
                   <Form.Control
                     type="text"
+                    maxLength={100}
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     required
@@ -136,6 +140,7 @@ export default function PlaydateForm() {
                   <Form.Label>City</Form.Label>
                   <Form.Control
                     type="text"
+                    maxLength={100}
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     required
@@ -159,10 +164,12 @@ export default function PlaydateForm() {
                     </Form.Group>
                   </Col>
                   <Col>
-                    <Form.Group className="mt-4">
-                      <Form.Label> </Form.Label>
-                      <Image src={image} alt="preview" thumbnail />
-                    </Form.Group>
+                    {image ? (
+                      <Form.Group className="mt-4">
+                        <Form.Label> </Form.Label>
+                        <Image src={image} alt="preview" thumbnail />
+                      </Form.Group>
+                    ) : null}
                   </Col>
                 </Row>
                 <Form.Group controlId="formGridTag">
@@ -170,6 +177,7 @@ export default function PlaydateForm() {
                   <Form.Control
                     type="text"
                     value={tag}
+                    maxLength={40}
                     onChange={(e) => setTag(e.target.value)}
                     placeholder="give tag e.g. park / water"
                     required
@@ -181,6 +189,7 @@ export default function PlaydateForm() {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     type="text"
+                    maxLength={600}
                     as="textarea"
                     placeholder="please describe more about playdate here"
                     required
