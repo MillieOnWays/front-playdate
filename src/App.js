@@ -17,6 +17,7 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import Homepage from "./pages/Homepage";
 
 import "./App.css";
+import PlaydateDetails from "./pages/PlaydateDetails";
 
 function App() {
   const dispatch = useDispatch();
