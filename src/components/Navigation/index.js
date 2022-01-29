@@ -25,9 +25,14 @@ export default function Navigation() {
           <NavbarItem path="/allplaydates" linkText="All Playdates" />
           <NavbarItem path="/other" linkText="Other" />
           <NavbarItem path="/playdateForm" linkText="Playdate_Form" />
+                    {/* Add condition for showing My profile page when user is login */}
+              {token === null ? null : (
+          <NavbarItem path="/myprofile" linkText="My Profile" />
+          )}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
 }
+

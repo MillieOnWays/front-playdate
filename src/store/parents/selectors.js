@@ -1,0 +1,1 @@
+export const selectAllKids = (reduxState) => reduxState.parent.allKids;
