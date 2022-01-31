@@ -8,7 +8,6 @@ import PlaydateDetailsCard from "../../components/PlaydateDetails";
 import Avatars from "../../components/PlaydateDetails/Avatars";
 import { selectToken } from "../../store/user/selectors";
 import { useNavigate } from "react-router";
-
 import "./PlaydateDetails.css";
 
 export default function PlaydateDetails() {

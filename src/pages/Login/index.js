@@ -23,7 +23,6 @@ export default function SignUp() {
   }, [token, navigate]);
 
   function submitForm(event) {
-    console.log("hi");
     event.preventDefault();
 
     dispatch(login(email, password));

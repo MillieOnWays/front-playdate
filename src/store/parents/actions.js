@@ -13,8 +13,6 @@ export const fetchParentData = (data) => ({
 });
 
 export const fetchParentWithKids = () => {
-  console.log("Im in the fetchParentWithKids action ");
-
   return async (dispatch, getState) => {
     const token = selectToken(getState());
 
@@ -25,10 +23,7 @@ export const fetchParentWithKids = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("fetchParentWithKids res is:", response.data);
-
       dispatch(fetchParentData(response.data));
-
       dispatch(appDoneLoading());
     } catch (e) {
       console.log(e);
@@ -38,8 +33,6 @@ export const fetchParentWithKids = () => {
 };
 
 export const addNewKidAction = (avatar, name, gender, birthDate, interests) => {
-  console.log("Im in the addNewKidAction  ");
-
   return async (dispatch, getState) => {
     const token = selectToken(getState());
 
@@ -60,10 +53,6 @@ export const addNewKidAction = (avatar, name, gender, birthDate, interests) => {
           },
         }
       );
-
-      console.log("Response of creat kid is", response.data);
-
-      console.log("I want to create the main Interest for new kid");
 
       await axios.post(`${apiUrl}/parent/kid/interest`, {
         name: interests,
@@ -109,10 +98,6 @@ export const updateKidAction = (
       interests,
       kidId,
     });
-    console.log("Update sent to DB");
-
-    console.log("The response of update is", response.data);
-
     // dispatch(fetchParentWithKids());
 
     dispatch(

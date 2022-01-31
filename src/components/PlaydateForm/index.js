@@ -1,5 +1,4 @@
 import {
-  Container,
   Form,
   Image,
   Col,
@@ -7,9 +6,8 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
-import moment from "moment";
 import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { newPlaydate } from "../../store/playdate/actions";
 import { useNavigate } from "react-router-dom";
 import topImg from "../../images/playdate1.jpg";
@@ -25,7 +23,7 @@ export default function PlaydateForm() {
   const [city, setCity] = useState("");
   const [tag, setTag] = useState("");
   const [description, setDescription] = useState("");
-  const [validated, setValidated] = useState(false);
+  //const [validated, setValidated] = useState(false);
 
   const dateStartTime = `${date} ${startTime}`;
   const dateEndTime = `${date} ${endTime}`;
