@@ -19,7 +19,7 @@ export default function PlaydateCard(playdate) {
   return (
     <Container>
       <Card className="mt-5" bg="light">
-        <Card.Header>
+        <Card.Header >
           <Row>
             <Col md={4}>
               <b>{firstLetterUpperCase(playdate.playdateName)}</b>
