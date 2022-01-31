@@ -7,6 +7,8 @@ import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+import logoImg from "../../images/playdateimg.jpg";
+import { Image } from "react-bootstrap";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -16,15 +18,21 @@ export default function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
-        YOUR PROJECT NAME
+        <Image
+          src={logoImg}
+          alt="Logo Image"
+          style={{ width: "15%", borderRadius: "50px", marginLeft: "10px" }}
+        />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="Home" />
-          <NavbarItem path="/allplaydates" linkText="All Playdates" />
-          <NavbarItem path="/other" linkText="Other" />
-          <NavbarItem path="/playdateForm" linkText="Playdate_Form" />
+          <NavbarItem path="/" linkText="Home" /
+          {token && (
+            <NavbarItem path="/allplaydates" linkText="All Playdates" />
+          )}
+          {token && (
+            <NavbarItem path="/playdateForm" linkText="Playdate_Form" />
                     {/* Add condition for showing My profile page when user is login */}
               {token === null ? null : (
           <NavbarItem path="/myprofile" linkText="My Profile" />

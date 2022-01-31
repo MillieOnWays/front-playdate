@@ -6,17 +6,24 @@ import { selectPlaydateDetails } from "../../store/playdate/selectors";
 import { fetchPlaydateDetails } from "../../store/playdate/actions";
 import PlaydateDetailsCard from "../../components/PlaydateDetails";
 import Avatars from "../../components/PlaydateDetails/Avatars";
+import { selectToken } from "../../store/user/selectors";
+import { useNavigate } from "react-router";
 
 import "./PlaydateDetails.css";
 
 export default function PlaydateDetails() {
+  const token = useSelector(selectToken);
+  const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
   const details = useSelector(selectPlaydateDetails);
 
   useEffect(() => {
+    if (token === null) {
+      navigate("/");
+    }
     dispatch(fetchPlaydateDetails(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, token, navigate]);
 
   return (
     <Container>
