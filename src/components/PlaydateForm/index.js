@@ -127,7 +127,7 @@ export default function PlaydateForm() {
                   <Form.Label>Address</Form.Label>
                   <Form.Control
                     type="text"
-                    maxLength={100}
+                    maxLength={60}
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     required
@@ -136,12 +136,16 @@ export default function PlaydateForm() {
                 <Form.Group controlId="formGridCity">
                   <Form.Label>City</Form.Label>
                   <Form.Control
+                    as="select"
                     type="text"
                     maxLength={100}
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     required
-                  />
+                  >
+                    <option>Amsterdam</option>
+                    <option>Almere</option>
+                  </Form.Control>
                 </Form.Group>
               </Col>
               <Col>
@@ -167,7 +171,6 @@ export default function PlaydateForm() {
                         <Image src={image} alt="preview" thumbnail />
                       </Form.Group>
                     ) : null}
-
                   </Col>
                 </Row>
                 <Form.Group controlId="formGridTag">
@@ -175,7 +178,7 @@ export default function PlaydateForm() {
                   <Form.Control
                     type="text"
                     value={tag}
-                    maxLength={40}
+                    maxLength={25}
                     onChange={(e) => setTag(e.target.value)}
                     placeholder="give tag e.g. park / water"
                     required
@@ -187,7 +190,7 @@ export default function PlaydateForm() {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     type="text"
-                    maxLength={600}
+                    maxLength={1000}
                     as="textarea"
                     placeholder="please describe more about playdate here"
                     required
