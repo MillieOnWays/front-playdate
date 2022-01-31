@@ -81,7 +81,7 @@ export default function AllPlaydates() {
   return (
     <Container>
       <Row>
-        <Col sm={2}>
+        <Col sm={3}>
           <Link to={`/playdateForm`}>
             <Button className="mt-5" style={{ width: "100%" }}>
               Create Playdate
