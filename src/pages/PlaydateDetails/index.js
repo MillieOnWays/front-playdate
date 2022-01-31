@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row, Card, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { selectPlaydateDetails } from "../../store/playdate/selectors";
 import { fetchPlaydateDetails } from "../../store/playdate/actions";
@@ -8,6 +8,7 @@ import PlaydateDetailsCard from "../../components/PlaydateDetails";
 import Avatars from "../../components/PlaydateDetails/Avatars";
 import { selectToken } from "../../store/user/selectors";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import "./PlaydateDetails.css";
 
 export default function PlaydateDetails() {
@@ -27,19 +28,23 @@ export default function PlaydateDetails() {
   return (
     <Container>
       <Row>
-        <Col sm={2}>
-          <Card className="mt-5" bg="light">
-            <Card.Header>
+        <Col sm={3}>
+          <Link to={`/allplaydates/`}>
+            <Button className="mt-5" style={{ width: "100%" }}>
+              Join
+            </Button>
+          </Link>
+          <Card className="mt-3" bg="light">
+            <Card.Header style={{ backgroundColor: "LightPink" }}>
               <b>Joined parents</b>
             </Card.Header>
-            <Card.Body>
-              <Row>All parents who joined</Row>
+            <Card.Body style={{ backgroundColor: "Pink" }}>
               <Avatars />
             </Card.Body>
           </Card>
         </Col>
 
-        <Col sm={8}>
+        <Col sm={9}>
           {details && (
             <PlaydateDetailsCard key={details.id} playdateDetails={details} />
           )}

@@ -3,15 +3,15 @@ import { Card, Form } from "react-bootstrap";
 
 export default function FilterCard(props) {
   return (
-    <Card className="mt-5" bg="light" >
+    <Card className="mt-3" bg="light" >
       <Card.Header style={{ backgroundColor: "LightPink" }}>
-        <b>Filter</b>
+        <b>Filter by</b>
       </Card.Header>
       <Card.Body style={{ backgroundColor: "pink" }}>
         <Form>
           <Form.Group controlId="formBasicSelect">
             <Form.Label>
-              <b>By City</b>
+              <b>City</b>
             </Form.Label>
             <Form.Control
               as="select"
@@ -24,7 +24,7 @@ export default function FilterCard(props) {
             </Form.Control>
 
             <Form.Label className="mt-3">
-              <b>By Date</b>
+              <b>Date</b>
             </Form.Label>
             <Form.Control
               value={props.filterDate}
