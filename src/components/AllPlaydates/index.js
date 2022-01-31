@@ -29,7 +29,7 @@ export default function PlaydateCard(playdate) {
               <b>
                 {playdate.city}
                 {", "}
-                {playdate.date}
+                {moment(playdate.date).format("MMM Do YY")}
               </b>
             </Col>
           </Row>
@@ -41,7 +41,7 @@ export default function PlaydateCard(playdate) {
           <Col md={9}>
             <Card.Body>
               <Card.Text>
-                {firstLetterUpperCase(playdate.description)}
+                {firstLetterUpperCase(playdate.description.slice(0,200))}{"..."}
               </Card.Text>
             </Card.Body>
           </Col>

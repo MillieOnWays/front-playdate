@@ -10,17 +10,13 @@
   background-size: cover;
 } */
 
-
-
-
-
 .top-left {
   position: absolute;
   top: 8px;
   left: 16px;
 }
 
-.container {
+.container1 {
   position: relative;
   text-align: center;
   color: black;
