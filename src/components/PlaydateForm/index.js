@@ -7,12 +7,15 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-
+import { newPlaydate } from "../../store/playdate/actions";
+import { useNavigate } from "react-router-dom";
 import topImg from "../../images/playdate1.jpg";
 
 export default function PlaydateForm() {
-  const [imageUrl, setImageUrl] = useState("");
+  const navigate = useNavigate();
+  const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -24,8 +27,24 @@ export default function PlaydateForm() {
 
   const dateStartTime = `${date} ${startTime}`;
   const dateEndTime = `${date} ${endTime}`;
+  const dispatch = useDispatch();
+
   function submitForm(e) {
     e.preventDefault();
+    dispatch(
+      newPlaydate(
+        name,
+        date,
+        dateStartTime,
+        dateEndTime,
+        address,
+        city,
+        image,
+        tag,
+        description
+      )
+    );
+    navigate("/allplaydates")
   }
 
   return (
@@ -131,8 +150,8 @@ export default function PlaydateForm() {
                       </Form.Label>
 
                       <Form.Control
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
+                        value={image}
+                        onChange={(e) => setImage(e.target.value)}
                         type="text"
                         placeholder="Paste imageUrl here"
                       />
@@ -141,7 +160,7 @@ export default function PlaydateForm() {
                   <Col>
                     <Form.Group className="mt-4">
                       <Form.Label> </Form.Label>
-                      <Image src={imageUrl} alt="preview" thumbnail />
+                      <Image src={image} alt="preview" thumbnail />
                     </Form.Group>
                   </Col>
                 </Row>

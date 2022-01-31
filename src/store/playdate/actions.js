@@ -1,4 +1,5 @@
 import { apiUrl, DEFAULT_PAGINATION_LIMIT } from "../../config/constants";
+import { selectUser } from "../user/selectors";
 import axios from "axios";
 import {
   appLoading,
@@ -17,24 +18,57 @@ export const fetchPlaydatesSuccess = (playdates) => {
   };
 };
 
-export const fetchPlaydates = () => {
+export const fetchPlaydateDetailsSuccess = (details) => ({
+  type: PLAYDATE_DETAILS_FETCHED,
+  payload: details,
+});
+
+export const fetchPlaydates = (ord, ordBy) => {
   return async (dispatch, getState) => {
     try {
-      //const playdatesCount = getState().playdates.allPlaydates.length;
-      const response = await axios.get(`${apiUrl}/playdates`);
-
-      dispatch(fetchPlaydatesSuccess(response.data));
+      const playdatesCount = getState().playdate.allPlaydates.length;
+      const order = ord ? ord : `DESC`;
+      const orderBy = ordBy ? ordBy : `id`;
+      const response = await axios.get(
+        `${apiUrl}/playdates?limit=${DEFAULT_PAGINATION_LIMIT}&offset=${playdatesCount}&order=${order}&by=${orderBy}`
+      );
+      dispatch(fetchPlaydatesSuccess(response.data.playdates.rows));
     } catch (e) {
       console.log(e.message);
     }
   };
 };
 
-//?limit=${DEFAULT_PAGINATION_LIMIT}&offset=${playdatesCount}&order=ASC
-const fetchPlaydateDetailsSuccess = (details) => ({
-  type: PLAYDATE_DETAILS_FETCHED,
-  payload: details,
-});
+export const newPlaydate = (
+  name,
+  date,
+  startTime,
+  endTime,
+  address,
+  city,
+  image,
+  tag,
+  description
+) => {
+  return async (dispatch, getState) => {
+    try {
+      const { id } = selectUser(getState());
+      const res = await axios.post(`${apiUrl}/playdates/${id}`, {
+        name,
+        date,
+        startTime,
+        endTime,
+        address,
+        city,
+        image,
+        tag,
+        description,
+      });
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
 
 export const fetchPlaydateDetails = (id) => {
   return async (dispatch, getState) => {
