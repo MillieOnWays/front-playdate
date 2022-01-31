@@ -39,17 +39,31 @@ export const fetchPlaydateDetailsSuccess = (details) => ({
   payload: details,
 });
 
-export const fetchPlaydates = (ord, ordBy, cityFilter) => {
+// Old fetch using sorting/fitlering
+// export const fetchPlaydates = (ord, ordBy, cityFilter) => {
+//   return async (dispatch, getState) => {
+//     try {
+//       const playdatesCount = getState().playdate.allPlaydates.length;
+//       const order = ord ? ord : `DESC`;
+//       const orderBy = ordBy ? ordBy : `createdAt`;
+//       const city = cityFilter ? cityFilter : "";
+//       const response = await axios.get(
+//         `${apiUrl}/playdates?limit=${DEFAULT_PAGINATION_LIMIT}&offset=${playdatesCount}&order=${order}&by=${orderBy}&city=${city}`
+//       );
+//       console.log("hello?", response.data.playdates.rows, "order:",order, "by:", orderBy);
+//       dispatch(fetchPlaydatesSuccess(response.data.playdates.rows));
+//     } catch (e) {
+//       console.log(e.message);
+//     }
+//   };
+// };
+
+export const fetchPlaydates = () => {
   return async (dispatch, getState) => {
     try {
-      const playdatesCount = getState().playdate.allPlaydates.length;
-      const order = ord ? ord : `DESC`;
-      const orderBy = ordBy ? ordBy : `createdAt`;
-      const city = cityFilter ? cityFilter : "";
       const response = await axios.get(
-        `${apiUrl}/playdates?limit=${DEFAULT_PAGINATION_LIMIT}&offset=${playdatesCount}&order=${order}&by=${orderBy}&city=${city}`
+        `${apiUrl}/playdates`
       );
-      console.log("hello?", response.data.playdates.rows, "order:",order, "by:", orderBy);
       dispatch(fetchPlaydatesSuccess(response.data.playdates.rows));
     } catch (e) {
       console.log(e.message);

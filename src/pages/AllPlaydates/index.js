@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Col, Row, Button, Card } from "react-bootstrap";
 //import { Next } from "react-bootstrap/esm/PageItem";
@@ -17,11 +17,20 @@ import { fetchPlaydates } from "../../store/playdate/actions";
 import "./AllPlaydates.css";
 
 export default function AllPlaydates() {
-
   const navigate = useNavigate();
   const token = useSelector(selectToken);
   const dispatch = useDispatch();
   const playdates = useSelector(selectPlaydates);
+
+  const [currentPlaydates, setCurrentPlaydates] = useState(playdates);
+  const [sortToggle, setSortToggle] = useState(false);
+
+  const [filterDate, setFilterDate] = useState("");
+  const [filterCity, setFilterCity] = useState("");
+
+  useEffect(() => {
+    setCurrentPlaydates(playdates);
+  }, [playdates]);
 
   useEffect(() => {
     if (token === null) {
@@ -29,6 +38,46 @@ export default function AllPlaydates() {
     }
     dispatch(fetchPlaydates());
   }, [dispatch, token, navigate]);
+
+  useEffect(() => {
+    //console.log("city:", filterCity, "Date", filterDate);
+    if (!filterCity && !filterDate) {
+      setCurrentPlaydates(playdates);
+    } else if (!filterCity && filterDate) {
+      setCurrentPlaydates(
+        playdates.filter((playdate) => {
+          return filterDate === playdate.date;
+        })
+      );
+    } else if (filterCity && !filterDate) {
+      setCurrentPlaydates(
+        playdates.filter((playdate) => filterCity === playdate.city)
+      );
+    } else {
+      setCurrentPlaydates(
+        playdates.filter(
+          (playdate) =>
+            filterDate === playdate.date && filterCity === playdate.city
+        )
+      );
+    }
+  }, [filterCity, filterDate]);
+
+  const sortPlaydatesBy = () => {
+    const playdatesCopy = [...currentPlaydates];
+
+    const sorted = playdatesCopy.sort(function (a, b) {
+      const aDate = new Date(a.date);
+      const bDate = new Date(b.date);
+
+      const asc = aDate - bDate;
+      const desc = bDate - aDate;
+
+      return sortToggle ? asc : desc;
+    });
+    setSortToggle(!sortToggle);
+    setCurrentPlaydates(sorted);
+  };
 
   return (
     <Container>
@@ -40,11 +89,17 @@ export default function AllPlaydates() {
             </Button>
           </Link>
 
-          <OrderCard />
-          <FilterCard />
+          <OrderCard sortPlaydatesBy={sortPlaydatesBy} toggle={sortToggle} />
+          <FilterCard
+            filterCity={filterCity}
+            filterDate={filterDate}
+            setFilterCity={setFilterCity}
+            setFilterDate={setFilterDate}
+          />
         </Col>
-        <Col sm={8}>
-          {playdates.map((playdate) => {
+
+        <Col sm={9}>
+          {currentPlaydates.map((playdate) => {
             return (
               <PlaydateCard
                 key={playdate.id}
