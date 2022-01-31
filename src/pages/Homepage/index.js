@@ -24,7 +24,7 @@ export default function Homepage() {
         />
         <br />
 
-        <Container className="container">
+        <Container className="container1">
           <img src={bg1} alt="" style={{ height: "500px", width: "100%" }} />
           <div className="top-left">
             <h2>
