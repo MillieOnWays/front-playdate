@@ -17,6 +17,7 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import Homepage from "./pages/Homepage";
 
 import "./App.css";
+import Myprofile from "./pages/Myprofile";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,8 +35,9 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Routes>
         <Route exact path="/" element={<Homepage />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route exact path="/myprofile" element={<Myprofile />} />
+        <Route exact path="/signup" element={<SignUp />} />
+        <Route exact path="/login" element={<Login />} />
         <Route path="/playdateForm" element={<PlaydateForm />} />
         <Route path="/allplaydates" element={<AllPlaydates />} />
         <Route path="/playdates/:id" element={<PlaydateDetails />} />

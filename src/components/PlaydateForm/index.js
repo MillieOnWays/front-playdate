@@ -16,7 +16,6 @@ import topImg from "../../images/playdate1.jpg";
 
 export default function PlaydateForm() {
   const navigate = useNavigate();
-
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -170,6 +169,7 @@ export default function PlaydateForm() {
                         <Image src={image} alt="preview" thumbnail />
                       </Form.Group>
                     ) : null}
+
                   </Col>
                 </Row>
                 <Form.Group controlId="formGridTag">

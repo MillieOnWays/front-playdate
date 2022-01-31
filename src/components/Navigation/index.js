@@ -27,13 +27,15 @@ export default function Navigation() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="Home" />
+          <NavbarItem path="/" linkText="Home" /
           {token && (
             <NavbarItem path="/allplaydates" linkText="All Playdates" />
           )}
-
           {token && (
             <NavbarItem path="/playdateForm" linkText="Playdate_Form" />
+                    {/* Add condition for showing My profile page when user is login */}
+              {token === null ? null : (
+          <NavbarItem path="/myprofile" linkText="My Profile" />
           )}
           {loginLogoutControls}
         </Nav>
@@ -41,3 +43,4 @@ export default function Navigation() {
     </Navbar>
   );
 }
+

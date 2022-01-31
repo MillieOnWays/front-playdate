@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Col, Row, Card, Form, FormGroup } from "react-bootstrap";
+import { Container, Col, Row, Button, Card } from "react-bootstrap";
 //import { Next } from "react-bootstrap/esm/PageItem";
-//import { Link } from "react-router-dom";
+
 import { useNavigate } from "react-router";
 import { selectPlaydates } from "../../store/playdate/selectors";
 import { selectToken } from "../../store/user/selectors";
+import { Link } from "react-router-dom";
 
+
+import FilterCard from "../../components/AllPlaydates/FilterCard";
+import OrderCard from "../../components/AllPlaydates/OrderCard";
 import PlaydateCard from "../../components/AllPlaydates";
 import { fetchPlaydates } from "../../store/playdate/actions";
 
@@ -29,68 +33,14 @@ export default function AllPlaydates() {
     <Container>
       <Row>
         <Col sm={2}>
-          <Card className="mt-5" bg="light">
-            <Card.Header>
-              <b>Find Playdate</b>
-            </Card.Header>
-            <Card.Body>
-              <Row>
-                <Form>
-                  <Form.Group controlId="formBasicSelect">
-                    <Form.Label>
-                      <b>Order by:</b>
-                    </Form.Label>
-                    <Form.Control
-                      as="select"
-                      value="something"
-                      //onChange={}
-                    >
-                      <option value="latest">Latest</option>
-                      {/* <option value="title">Title</option>
-                      <option value="parent">Parent</option>
-                      <option value="city">City</option>
-                      <option value="date">Date</option> */}
-                    </Form.Control>
-                  </Form.Group>
-                </Form>
-              </Row>
-              <Row className="mt-3">
-                <Form>
-                  <Form.Group controlId="formBasicSelect">
-                    <Form.Label>
-                      <b>Filter by:</b>
-                    </Form.Label>
-                    <br />
-                    <Form.Control
-                      as="select"
-                      value="something"
-                      //onChange={}
-                    >
-                      <option value="all">All cities</option>
-                      {/* <option value="almere">Almere</option>
-                      <option value="amsterdam">Amsterdam</option> */}
-                    </Form.Control>
-                    <br />
-                    <Form.Control
-                      as="select"
-                      value="something"
-                      //onChange={}
-                    >
-                      <option value="all">All Dates</option>
-                    </Form.Control>
-                    <br />
-                    <Form.Control
-                      as="select"
-                      value="something"
-                      //onChange={}
-                    >
-                      <option value="all">All Start Times</option>
-                    </Form.Control>
-                  </Form.Group>
-                </Form>
-              </Row>
-            </Card.Body>
-          </Card>
+          <Link to={`/playdateForm`}>
+            <Button className="mt-5" style={{ width: "100%" }}>
+              Create Playdate
+            </Button>
+          </Link>
+
+          <OrderCard />
+          <FilterCard />
         </Col>
         <Col sm={8}>
           {playdates.map((playdate) => {
@@ -105,6 +55,8 @@ export default function AllPlaydates() {
                 tag={playdate.tag}
                 creatorName={playdate.user.name}
                 creatorAvatar={playdate.user.avatar}
+                createdAt={playdate.createdAt}
+                image={playdate.image}
               />
             );
           })}
