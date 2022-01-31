@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Container, Row, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import defaultImage from "../../images/kids-play-ballpit.jpg";
+import defaultImage from "../../images/friends.jpg";
 import moment from "moment";
 import Avatar from "boring-avatars";
 import { AVATAR_COLORS } from "../../config/constants";
