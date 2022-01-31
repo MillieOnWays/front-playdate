@@ -1,7 +1,9 @@
 import React from "react";
-import { Button, Col, Container, Row, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Col, Container, Row, Card } from "react-bootstrap";
 import moment from "moment";
+import Avatar from "boring-avatars";
+import { AVATAR_COLORS } from "../../config/constants";
+import defaultImage from "../../images/friends.jpg";
 
 export default function PlaydateDetailsCard(props) {
   const {
@@ -21,56 +23,75 @@ export default function PlaydateDetailsCard(props) {
     return moment(time).format("LT");
   };
 
+  function firstLetterUpperCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  function showPlaydateImage(playdateImage) {
+    const image = playdateImage ? playdateImage : defaultImage;
+    return image;
+  }
+
   return (
     <Container>
       <Card className="mt-5" bg="light">
-        <Card.Header>
+        <Card.Body style={{ backgroundColor: "Pink" }}>
           <Row>
             <Col md={3}>
-              <Card.Img variant="top" src={image} alt="playdate-image" />
+              <Card.Img
+                variant="top"
+                src={showPlaydateImage(image)}
+                alt="playdate-image"
+              />
             </Col>
-            <Col md={{ span: 5, offset: 0 }} style={{ textAlign: "left" }}>
+            <Col md={9}>
               <h2>{name}</h2>
-            </Col>
-            <Col md={{ span: 4, offset: 8 }} style={{ textAlign: "right" }}>
-              <Link to={`/allplaydates/`}>
-                <Button>Join</Button>
-              </Link>
-            </Col>
-            <Col md={{ span: 4, offset: 3 }} style={{ textAlign: "left" }}>
-              <p>
-                Created by: <strong>{user.name}</strong>
-              </p>
+              <b>Created by: </b>{" "}
+              <Avatar
+                size={20}
+                name={user.name ? user.name : "user"}
+                variant="beam"
+                colors={AVATAR_COLORS}
+              />{" "}
+              {firstLetterUpperCase(user.name ? user.name : "")}
             </Col>
           </Row>
-        </Card.Header>
+        </Card.Body>
       </Card>
 
-      <Card>
-        <Card.Header>
-          <Row>
-            <Col md={9}>
-              <h3>Description</h3>
-            </Col>
-          </Row>
+      <Card className="mt-3" bg="light">
+        <Card.Header style={{ backgroundColor: "LightPink" }}>
+          <b>Description</b>
         </Card.Header>
-        <Card.Body>
+        <Card.Body style={{ backgroundColor: "Pink" }}>
           <Card.Text>{description}</Card.Text>
         </Card.Body>
       </Card>
 
       <Col>
-        <Card className="mt-5" bg="light">
-          <Card.Header>
+        <Card className="mt-3" bg="light">
+          <Card.Header style={{ backgroundColor: "LightPink" }}>
             <b>Information:</b>
           </Card.Header>
-          <Card.Body>
-            <Row>Tag: #{tag}</Row>
-            <Row>Date: {date}</Row>
-            <Row>Start Time: {convertedTime(startTime)}</Row>
-            <Row>End Time: {convertedTime(endTime)}</Row>
-            <Row>City: {city}</Row>
-            <Row>Address: {address}</Row>
+          <Card.Body style={{ backgroundColor: "Pink" }}>
+            <p>
+              <b>Tag:</b> #{tag}
+            </p>
+            <p>
+              <b>Date:</b> {date}
+            </p>
+            <p>
+              <b>Start Time:</b> {convertedTime(startTime)}
+            </p>
+            <p>
+              <b>End Time:</b> {convertedTime(endTime)}
+            </p>
+            <p>
+              <b>City:</b> {city}
+            </p>
+            <p>
+              <b>Address:</b> {address}
+            </p>
           </Card.Body>
         </Card>
       </Col>

@@ -35,7 +35,7 @@ export default function SignUp() {
     <Container className="mt-5">
       <Card>
         {/* <Card.Img variant="top" src="../../../images/friends.jpg" /> */}
-        <Card.Header>
+        <Card.Header style={{ backgroundColor: "LightPink" }}>
           <b>Login</b>
         </Card.Header>
         <Card.Body style={{ backgroundColor: "pink", textAlign: "center" }}>

@@ -3,7 +3,7 @@ import { Button, Card } from "react-bootstrap";
 
 export default function OrderCard(props) {
   return (
-    <Card className="mt-5" bg="light">
+    <Card className="mt-3" bg="light">
       <Card.Header style={{ backgroundColor: "LightPink" }}>
         <b>Sort by</b>
       </Card.Header>
