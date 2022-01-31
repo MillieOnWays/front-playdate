@@ -19,7 +19,7 @@ export default function PlaydateCard(playdate) {
   return (
     <Container>
       <Card className="mt-5" bg="light">
-        <Card.Header >
+        <Card.Header style={{ backgroundColor: "LightPink" }}>
           <Row>
             <Col md={4}>
               <b>{firstLetterUpperCase(playdate.playdateName)}</b>
@@ -41,13 +41,14 @@ export default function PlaydateCard(playdate) {
           <Col md={9}>
             <Card.Body>
               <Card.Text>
-                {firstLetterUpperCase(playdate.description.slice(0,200))}{"..."}
+                {firstLetterUpperCase(playdate.description.slice(0, 200))}
+                {"..."}
               </Card.Text>
             </Card.Body>
           </Col>
         </Row>
 
-        <Card.Footer>
+        <Card.Footer style={{ backgroundColor: "Pink" }}>
           <Row>
             <Col className="text-muted">
               Created by:{" "}
