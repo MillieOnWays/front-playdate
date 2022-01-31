@@ -6,18 +6,15 @@ import { selectToken, selectUser } from "../../store/user/selectors";
 import { selectAllKids } from "../../store/parents/selectors";
 
 import "./profile.css";
-import { addNewKidAction, updateKidAction } from "../../store/parents/actions";
+import { addNewKidAction } from "../../store/parents/actions";
 import { useNavigate } from "react-router-dom";
-import { selectOptions } from "@testing-library/user-event/dist/select-options";
 
 export default function MyprofileCompo() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const token = useSelector(selectToken);
-  console.log("user is", user);
 
   const allKids = useSelector(selectAllKids);
-  console.log("allKids is", allKids);
 
   // const [avatar, setAvatar] = useState();
   const [name, setName] = useState("");
@@ -26,18 +23,8 @@ export default function MyprofileCompo() {
   const [interests, setInterests] = useState("");
   const [avatar, setAvatar] = useState("");
 
-  console.log("kid name is", name);
-  console.log("type of name is", typeof name);
-
-  console.log("kid gender is", gender);
-  console.log("kid birthDate is", birthDate);
-  console.log("kid interests is", interests);
-  console.log("kid avatar is", avatar);
-
   const [addRow, setAddRow] = useState(false);
   const [editRow, setEditRow] = useState(false);
-
-  console.log("test editRow is:", editRow);
 
   useEffect(() => {
     if (token === null) {
@@ -54,7 +41,7 @@ export default function MyprofileCompo() {
   };
 
   const showAddRow = () => setAddRow(!addRow);
-  const closeEdit = () => setEditRow(!editRow);
+  //const closeEdit = () => setEditRow(!editRow);
 
   const navigate = useNavigate();
 
@@ -72,18 +59,15 @@ export default function MyprofileCompo() {
     navigate("/myprofile");
   };
 
-  const updateKid = (kidId) => {
-    console.log("Im clicked");
-    // dispatch(
-    //   updateKidAction(avatar, name, gender, birthDate, interests, kidId)
-    // );
-  };
+  // const updateKid = (kidId) => {
+  //   // dispatch(
+  //   //   updateKidAction(avatar, name, gender, birthDate, interests, kidId)
+  //   // );
+  // };
 
   const handleCheck = (id) => {
     setEditRow(!editRow);
-    console.log("checked id is", id);
   };
-  console.log("setEditRow", editRow);
 
   return (
     <div>

@@ -1,12 +1,15 @@
-import { apiUrl, DEFAULT_PAGINATION_LIMIT } from "../../config/constants";
+import {
+  apiUrl,
+  // DEFAULT_PAGINATION_LIMIT
+} from "../../config/constants";
 import { selectUser } from "../user/selectors";
 import axios from "axios";
-import {
-  appLoading,
-  appDoneLoading,
-  showMessageWithTimeout,
-  setMessage,
-} from "../appState/actions";
+// import {
+//   appLoading,
+//   appDoneLoading,
+//   showMessageWithTimeout,
+//   setMessage,
+// } from "../appState/actions";
 
 export const FETCH_PLAYDATES_SUCCESS = "FETCH_PLAYDATES_SUCCESS";
 export const PLAYDATE_DETAILS_FETCHED = "PLAYDATE_DETAILS_FETCHED";
@@ -61,9 +64,7 @@ export const fetchPlaydateDetailsSuccess = (details) => ({
 export const fetchPlaydates = () => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.get(
-        `${apiUrl}/playdates`
-      );
+      const response = await axios.get(`${apiUrl}/playdates`);
       dispatch(fetchPlaydatesSuccess(response.data.playdates.rows));
     } catch (e) {
       console.log(e.message);

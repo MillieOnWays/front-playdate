@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Col, Row, Button, Card } from "react-bootstrap";
-//import { Next } from "react-bootstrap/esm/PageItem";
+import { Container, Col, Row, Button } from "react-bootstrap";
 
 import { useNavigate } from "react-router";
 import { selectPlaydates } from "../../store/playdate/selectors";
