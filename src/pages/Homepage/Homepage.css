@@ -1,7 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Indie Flower", cursive;
+  font-family: "Roboto", sans-serif;
 }
 
 /* .homePage {
@@ -21,8 +21,4 @@
   text-align: center;
   color: black;
   font-weight: bold;
-}
-
-h2 {
-  font-style: italic;
 }
