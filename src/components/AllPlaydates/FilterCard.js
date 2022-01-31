@@ -3,11 +3,11 @@ import { Card, Form } from "react-bootstrap";
 
 export default function FilterCard(props) {
   return (
-    <Card className="mt-5" bg="light">
-      <Card.Header>
+    <Card className="mt-5" bg="light" >
+      <Card.Header style={{ backgroundColor: "LightPink" }}>
         <b>Filter</b>
       </Card.Header>
-      <Card.Body>
+      <Card.Body style={{ backgroundColor: "pink" }}>
         <Form>
           <Form.Group controlId="formBasicSelect">
             <Form.Label>
@@ -22,8 +22,8 @@ export default function FilterCard(props) {
               <option value="Almere">Almere</option>
               <option value="Amsterdam">Amsterdam</option>
             </Form.Control>
-            <br />
-            <Form.Label>
+
+            <Form.Label className="mt-3">
               <b>By Date</b>
             </Form.Label>
             <Form.Control

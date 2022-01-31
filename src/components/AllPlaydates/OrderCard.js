@@ -4,11 +4,11 @@ import { Button, Card } from "react-bootstrap";
 export default function OrderCard(props) {
   return (
     <Card className="mt-5" bg="light">
-      <Card.Header>
+      <Card.Header style={{ backgroundColor: "LightPink" }}>
         <b>Sort by</b>
       </Card.Header>
-      <Card.Body>
-        <Button style={{ width: "100%" }} onClick={props.sortPlaydatesBy}>
+      <Card.Body style={{ backgroundColor: "Pink" }}>
+        <Button style={{ width: "100%" , }} onClick={props.sortPlaydatesBy}>
           {props.toggle ? "Date ↑" : "Date ↓"}
         </Button>
       </Card.Body>
