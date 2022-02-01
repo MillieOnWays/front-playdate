@@ -159,7 +159,7 @@ export default function MyprofileCompo() {
                       {/* <th>
                     <h4>Check for edit</h4>
                   </th> */}
-                      <th>Delete kid</th>
+                      <th><h4>Delete kid</h4></th>
                     </tr>
                   </thead>
 
