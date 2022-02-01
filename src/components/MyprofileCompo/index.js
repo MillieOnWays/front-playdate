@@ -154,12 +154,12 @@ export default function MyprofileCompo() {
                         <h4>Birth date</h4>
                       </th>
                       <th>
-                        <h4>interest</h4>
+                        <h4>Interest</h4>
                       </th>
                       {/* <th>
                     <h4>Check for edit</h4>
                   </th> */}
-                      <th>Delete kid</th>
+                      <th><h4>Delete kid</h4></th>
                     </tr>
                   </thead>
 

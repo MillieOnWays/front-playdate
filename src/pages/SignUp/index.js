@@ -4,7 +4,7 @@ import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Col, Card, Form, Button, Container } from "react-bootstrap";
-import { BUTTON_COLOR } from "../../config/constants";
+import { BUTTON_COLOR, CARD_COLORS } from "../../config/constants";
 import "./SignUp.css";
 
 export default function SignUp() {
@@ -44,14 +44,14 @@ export default function SignUp() {
           style={{
             fontSize: "50px",
             textAlign: "center",
-            backgroundColor: "LightPink",
+            backgroundColor: `${CARD_COLORS[3]}`,
           }}
         >
           Sign Up
         </Card.Header>
         <Card.Body
           style={{
-            backgroundColor: "Pink",
+            backgroundColor: `${CARD_COLORS[0]}`,
             textAlign: "center",
             minHeight: "500px",
           }}
