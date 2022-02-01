@@ -21,7 +21,7 @@ export default function PlaydateCard(playdate) {
     
     <Container>
       <Card className="mt-5" bg="light">
-        <Card.Header style={{ backgroundColor:`${CARD_COLORS[3]}` }}>
+        <Card.Header style={{ backgroundColor: `${CARD_COLORS[3]}` }}>
           <Row>
             <Col md={4}>
               <b>{firstLetterUpperCase(playdate.playdateName)}</b>
@@ -50,9 +50,9 @@ export default function PlaydateCard(playdate) {
           </Col>
         </Row>
 
-        <Card.Footer style={{ backgroundColor:`${CARD_COLORS[0]}` }}>
+        <Card.Footer style={{ backgroundColor: `${CARD_COLORS[0]}` }}>
           <Row>
-            <Col className="text-muted">
+            <Col sm={6} className="text-muted">
               Created by:{" "}
               <Avatar
                 size={20}
@@ -64,7 +64,18 @@ export default function PlaydateCard(playdate) {
               {", "}
               {moment(playdate.createdAt).startOf("hour").fromNow()}
             </Col>
-            <Col md={{ span: 3, offset: 4 }} style={{ textAlign: "right" }}>
+            <Col sm={4} style={{ textAlign: "right", top: "50%" }}>
+              <b
+                style={{
+                  backgroundColor: `${CARD_COLORS[1]}`,
+                  padding: "5px",
+                  borderRadius: "25px",
+                }}
+              >
+                {firstLetterUpperCase(playdate.tag ? playdate.tag : "No Tags")}
+              </b>
+            </Col>
+            <Col sm={2} style={{ textAlign: "right" }}>
               <Link to={`/playdates/${playdate.id}`}>
                 <Button>Read more</Button>
               </Link>
@@ -75,5 +86,3 @@ export default function PlaydateCard(playdate) {
     </Container>
   );
 }
-
-//style={{ borderColor: "red", borderStyle: "solid" }} FOR CHECKING LAYOUT

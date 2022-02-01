@@ -152,18 +152,9 @@ export default function MyprofileCompo() {
                     {allKids.map((kid, i) => (
                       <tr key={i}>
                         <td style={{ textAlign: "center" }}>
-                          {/* <Form.Group controlId="formBasicEmail">
-                            <Form.Control
-                              plaintext
-                              defaultValue={kid.avatar}
-                              onChange={(event) =>
-                                setAvatar(event.target.value)
-                              }
-                            />
-                          </Form.Group> */}
                           <Avatar
                             size={30}
-                            name={user.name ? user.name : "user"}
+                            name={name ? name : "user"}
                             variant="beam"
                             colors={AVATAR_COLORS}
                           />
@@ -236,13 +227,6 @@ export default function MyprofileCompo() {
                     {!addRow ? null : (
                       <tr>
                         <td style={{ textAlign: "center" }}>
-                          {/* <Form.Group controlId="formBasicEmail">
-                        <Form.Control
-                          // plaintext
-                          defaultValue=""
-                          onChange={(event) => setAvatar(event.target.value)}
-                        />
-                      </Form.Group> */}
                           <Avatar
                             size={30}
                             name={name ? name : "user"}
@@ -253,7 +237,6 @@ export default function MyprofileCompo() {
                         <td>
                           <Form.Group controlId="formBasicEmail">
                             <Form.Control
-                              // plaintext
                               defaultValue=""
                               onChange={(event) => setName(event.target.value)}
                             />
@@ -263,7 +246,6 @@ export default function MyprofileCompo() {
                           <Form.Group controlId="formBasicEmail">
                             <Form.Control
                               as="select"
-                              // plaintext
                               //defaultValue=""
                               onChange={(event) =>
                                 setGender(event.target.value)
@@ -278,7 +260,6 @@ export default function MyprofileCompo() {
                         <td>
                           <Form.Group controlId="formBasicEmail">
                             <Form.Control
-                              // plaintext
                               type="date"
                               defaultValue=""
                               max={new Date().toISOString().split("T")[0]}
@@ -291,7 +272,6 @@ export default function MyprofileCompo() {
                         <td>
                           <Form.Group controlId="formBasicEmail">
                             <Form.Control
-                              // plaintext
                               defaultValue=""
                               onChange={(event) =>
                                 setInterests(event.target.value)
@@ -346,8 +326,6 @@ export default function MyprofileCompo() {
                           <td>
                             <Form.Group controlId="formBasicEmail">
                               <Form.Control
-                                // plaintext
-                                // defaultValue={kid.avatar}
                                 onChange={(event) =>
                                   setAvatar(event.target.value)
                                 }
@@ -357,8 +335,6 @@ export default function MyprofileCompo() {
                           <td>
                             <Form.Group controlId="formBasicEmail">
                               <Form.Control
-                                // plaintext
-                                // defaultValue={kid.name}
                                 onChange={(event) =>
                                   setName(event.target.value)
                                 }
@@ -368,8 +344,6 @@ export default function MyprofileCompo() {
                           <td>
                             <Form.Group controlId="formBasicEmail">
                               <Form.Control
-                                // plaintext
-                                // defaultValue={kid.gender}
                                 onChange={(event) =>
                                   setGender(event.target.value)
                                 }
@@ -380,8 +354,6 @@ export default function MyprofileCompo() {
                             <Form.Group controlId="formBasicEmail">
                               <Form.Control
                                 type="date"
-                                // plaintext
-                                // defaultValue={kid.birthDate}
                                 onChange={(event) =>
                                   setBirthDate(event.target.value)
                                 }
@@ -391,8 +363,6 @@ export default function MyprofileCompo() {
                           <td>
                             <Form.Group controlId="formBasicEmail">
                               <Form.Control
-                                // plaintext
-                                // defaultValue={mapInterests(kid.interests)}
                                 onChange={(event) =>
                                   setInterests(event.target.value)
                                 }
@@ -400,11 +370,7 @@ export default function MyprofileCompo() {
                             </Form.Group>
                           </td>
                           <td>
-                            <Button
-                              variant="primary"
-                              type="submit"
-                              // onClick={updateKid(kid.id)}
-                            >
+                            <Button variant="primary" type="submit">
                               Edit
                             </Button>
                           </td>
