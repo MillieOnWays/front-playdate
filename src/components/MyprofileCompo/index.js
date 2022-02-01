@@ -245,7 +245,7 @@ export default function MyprofileCompo() {
                       </Form.Group> */}
                           <Avatar
                             size={30}
-                            name={user.name ? user.name : "user"}
+                            name={name ? name : "user"}
                             variant="beam"
                             colors={AVATAR_COLORS}
                           />
@@ -264,7 +264,7 @@ export default function MyprofileCompo() {
                             <Form.Control
                               as="select"
                               // plaintext
-                              defaultValue=""
+                              //defaultValue=""
                               onChange={(event) =>
                                 setGender(event.target.value)
                               }
