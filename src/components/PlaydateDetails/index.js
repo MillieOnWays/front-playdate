@@ -55,6 +55,17 @@ export default function PlaydateDetailsCard(props) {
                 colors={AVATAR_COLORS}
               />{" "}
               {firstLetterUpperCase(user.name ? user.name : "")}
+              <br />
+              <br />
+              <b
+                style={{
+                  backgroundColor: `${CARD_COLORS[1]}`,
+                  padding: "5px",
+                  borderRadius: "25px",
+                }}
+              >
+                {tag}
+              </b>
             </Col>
           </Row>
         </Card.Body>
@@ -75,9 +86,6 @@ export default function PlaydateDetailsCard(props) {
             <b>Information:</b>
           </Card.Header>
           <Card.Body style={{ backgroundColor: `${CARD_COLORS[0]}` }}>
-            <p>
-              <b>Tag:</b> #{tag}
-            </p>
             <p>
               <b>Date:</b> {date}
             </p>
