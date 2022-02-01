@@ -14,8 +14,11 @@ import { selectToken, selectUser } from "../../store/user/selectors";
 import { selectAllKids } from "../../store/parents/selectors";
 import { deleteKid } from "../../store/parents/actions";
 import Avatar from "boring-avatars";
-import { AVATAR_COLORS } from "../../config/constants";
-import { CARD_COLORS } from "../../config/constants";
+import {
+  AVATAR_COLORS,
+  CARD_COLORS,
+  BUTTON_COLOR,
+} from "../../config/constants";
 
 import "./profile.css";
 import { addNewKidAction } from "../../store/parents/actions";
@@ -116,7 +119,14 @@ export default function MyprofileCompo() {
                     {user.email}
                   </p>
                   <Link to={`/playdateForm`}>
-                    <Button>Create your playdate</Button>
+                    <Button
+                      style={{
+                        backgroundColor: `${BUTTON_COLOR}`,
+                        borderColor: `${BUTTON_COLOR}`,
+                      }}
+                    >
+                      Create your playdate
+                    </Button>
                   </Link>
                 </Row>
               </Card.Body>
@@ -299,6 +309,10 @@ export default function MyprofileCompo() {
                             variant="primary"
                             type="submit"
                             onClick={addNewKid}
+                            style={{
+                              backgroundColor: `${BUTTON_COLOR}`,
+                              borderColor: `${BUTTON_COLOR}`,
+                            }}
                           >
                             Add kid
                           </Button>
@@ -307,7 +321,13 @@ export default function MyprofileCompo() {
                     )}
                   </tbody>
                 </Table>
-                <Button onClick={showAddRow}>
+                <Button
+                  onClick={showAddRow}
+                  style={{
+                    backgroundColor: `${BUTTON_COLOR}`,
+                    borderColor: `${BUTTON_COLOR}`,
+                  }}
+                >
                   {!addRow ? "Add kids" : "Cancel"}
                 </Button>
                 {/* <Button onClick={addKid}>Add kids</Button> */}
@@ -385,7 +405,14 @@ export default function MyprofileCompo() {
                             </Form.Group>
                           </td>
                           <td>
-                            <Button variant="primary" type="submit">
+                            <Button
+                              variant="primary"
+                              type="submit"
+                              style={{
+                                backgroundColor: `${BUTTON_COLOR}`,
+                                borderColor: `${BUTTON_COLOR}`,
+                              }}
+                            >
                               Edit
                             </Button>
                           </td>

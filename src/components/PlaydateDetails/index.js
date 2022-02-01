@@ -2,8 +2,7 @@ import React from "react";
 import { Col, Container, Row, Card } from "react-bootstrap";
 import moment from "moment";
 import Avatar from "boring-avatars";
-import { AVATAR_COLORS } from "../../config/constants";
-import { CARD_COLORS } from "../../config/constants";
+import { AVATAR_COLORS, CARD_COLORS } from "../../config/constants";
 import defaultImage from "../../images/friends.jpg";
 
 export default function PlaydateDetailsCard(props) {
@@ -62,6 +61,7 @@ export default function PlaydateDetailsCard(props) {
                   backgroundColor: `${CARD_COLORS[1]}`,
                   padding: "5px",
                   borderRadius: "25px",
+                  cursor: "pointer",
                 }}
               >
                 {firstLetterUpperCase(tag ? tag : "No Tags")}
