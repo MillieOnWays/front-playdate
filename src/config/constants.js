@@ -10,3 +10,5 @@ export const AVATAR_COLORS = [
 ];
 
 export const CARD_COLORS = ["#A8E6CF", "#DCEDC1", "#FFD3B6", "#FFAAA5"];
+
+export const BUTTON_COLOR = "#00BFFF";

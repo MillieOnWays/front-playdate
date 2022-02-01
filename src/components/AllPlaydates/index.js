@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import defaultImage from "../../images/friends.jpg";
 import moment from "moment";
 import Avatar from "boring-avatars";
-import { AVATAR_COLORS } from "../../config/constants";
-import { CARD_COLORS } from "../../config/constants";
+import {
+  AVATAR_COLORS,
+  CARD_COLORS,
+  BUTTON_COLOR,
+} from "../../config/constants";
+import "../../App.css";
 
 export default function PlaydateCard(playdate) {
   function showPlaydateImage(playdateImage) {
@@ -18,7 +22,6 @@ export default function PlaydateCard(playdate) {
   }
 
   return (
-    
     <Container>
       <Card className="mt-5" bg="light">
         <Card.Header style={{ backgroundColor: `${CARD_COLORS[3]}` }}>
@@ -52,24 +55,34 @@ export default function PlaydateCard(playdate) {
 
         <Card.Footer style={{ backgroundColor: `${CARD_COLORS[0]}` }}>
           <Row>
-            <Col sm={6} className="text-muted">
-              Created by:{" "}
-              <Avatar
-                size={20}
-                name={playdate.creatorName}
-                variant="beam"
-                colors={AVATAR_COLORS}
-              />{" "}
-              <b>{firstLetterUpperCase(playdate.creatorName)}</b>
-              {", "}
-              {moment(playdate.createdAt).startOf("hour").fromNow()}
+            <Col sm={6} className="text-muted" style={{ position: "relative" }}>
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  msTransform: "translateY(-50%)",
+                }}
+              >
+                Created by:{" "}
+                <Avatar
+                  size={20}
+                  name={playdate.creatorName}
+                  variant="beam"
+                  colors={AVATAR_COLORS}
+                />{" "}
+                <b>{firstLetterUpperCase(playdate.creatorName)}</b>
+                {", "}
+                {moment(playdate.createdAt).startOf("hour").fromNow()}
+              </div>
             </Col>
-            <Col sm={4} style={{ textAlign: "right", top: "50%" }}>
+            <Col sm={4} style={{ textAlign: "right" }}>
               <b
                 style={{
                   backgroundColor: `${CARD_COLORS[1]}`,
                   padding: "5px",
                   borderRadius: "25px",
+                  cursor: "pointer",
                 }}
               >
                 {firstLetterUpperCase(playdate.tag ? playdate.tag : "No Tags")}
@@ -77,7 +90,14 @@ export default function PlaydateCard(playdate) {
             </Col>
             <Col sm={2} style={{ textAlign: "right" }}>
               <Link to={`/playdates/${playdate.id}`}>
-                <Button>Read more</Button>
+                <Button
+                  style={{
+                    backgroundColor: `${BUTTON_COLOR}`,
+                    borderColor: `${BUTTON_COLOR}`,
+                  }}
+                >
+                  Read more
+                </Button>
               </Link>
             </Col>
           </Row>

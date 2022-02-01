@@ -4,6 +4,7 @@ import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Card, Col, Form, Button, Container } from "react-bootstrap";
+import { BUTTON_COLOR } from "../../config/constants";
 import "./Login.css";
 
 export default function SignUp() {
@@ -80,7 +81,15 @@ export default function SignUp() {
               />
             </Form.Group>
             <Form.Group className="mt-3">
-              <Button variant="primary" type="submit" onClick={submitForm}>
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={submitForm}
+                style={{
+                  backgroundColor: `${BUTTON_COLOR}`,
+                  borderColor: `${BUTTON_COLOR}`,
+                }}
+              >
                 Log in
               </Button>
             </Form.Group>

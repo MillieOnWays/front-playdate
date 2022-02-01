@@ -5,7 +5,7 @@ import moment from "moment";
 import { useNavigate } from "react-router";
 import { selectPlaydates } from "../../store/playdate/selectors";
 import { selectToken } from "../../store/user/selectors";
-
+import { BUTTON_COLOR } from "../../config/constants";
 import { Link } from "react-router-dom";
 
 import FilterCard from "../../components/AllPlaydates/FilterCard";
@@ -84,7 +84,14 @@ export default function AllPlaydates() {
       <Row>
         <Col sm={3}>
           <Link to={`/playdateForm`}>
-            <Button className="mt-5" style={{ width: "100%" }}>
+            <Button
+              className="mt-5"
+              style={{
+                width: "100%",
+                backgroundColor: `${BUTTON_COLOR}`,
+                borderColor: `${BUTTON_COLOR}`,
+              }}
+            >
               Create Playdate
             </Button>
           </Link>
