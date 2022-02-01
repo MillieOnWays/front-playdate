@@ -13,8 +13,6 @@ export default function Myprofile() {
 
   // we need fetched data from db to send to MyprofileCompo
   return (
-    <div>
       <MyprofileCompo />
-    </div>
   );
 }

@@ -5,6 +5,7 @@ import defaultImage from "../../images/friends.jpg";
 import moment from "moment";
 import Avatar from "boring-avatars";
 import { AVATAR_COLORS } from "../../config/constants";
+import { CARD_COLORS } from "../../config/constants";
 
 export default function PlaydateCard(playdate) {
   function showPlaydateImage(playdateImage) {
@@ -20,7 +21,7 @@ export default function PlaydateCard(playdate) {
     
     <Container>
       <Card className="mt-5" bg="light">
-        <Card.Header>
+        <Card.Header style={{ backgroundColor:`${CARD_COLORS[3]}` }}>
           <Row>
             <Col md={4}>
               <b>{firstLetterUpperCase(playdate.playdateName)}</b>
@@ -30,7 +31,7 @@ export default function PlaydateCard(playdate) {
               <b>
                 {playdate.city}
                 {", "}
-                {playdate.date}
+                {moment(playdate.date).format("MMM Do YY")}
               </b>
             </Col>
           </Row>
@@ -42,13 +43,14 @@ export default function PlaydateCard(playdate) {
           <Col md={9}>
             <Card.Body>
               <Card.Text>
-                {firstLetterUpperCase(playdate.description)}
+                {firstLetterUpperCase(playdate.description.slice(0, 200))}
+                {"..."}
               </Card.Text>
             </Card.Body>
           </Col>
         </Row>
 
-        <Card.Footer>
+        <Card.Footer style={{ backgroundColor:`${CARD_COLORS[0]}` }}>
           <Row>
             <Col className="text-muted">
               Created by:{" "}
