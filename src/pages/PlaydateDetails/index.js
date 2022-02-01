@@ -10,7 +10,7 @@ import { selectToken } from "../../store/user/selectors";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "./PlaydateDetails.css";
-import { CARD_COLORS } from "../../config/constants";
+import { CARD_COLORS, BUTTON_COLOR } from "../../config/constants";
 
 export default function PlaydateDetails() {
   const token = useSelector(selectToken);
@@ -31,15 +31,22 @@ export default function PlaydateDetails() {
       <Row>
         <Col sm={3}>
           <Link to={`/allplaydates/`}>
-            <Button className="mt-5" style={{ width: "100%" }}>
+            <Button
+              className="mt-5"
+              style={{
+                width: "100%",
+                backgroundColor: `${BUTTON_COLOR}`,
+                borderColor: `${BUTTON_COLOR}`,
+              }}
+            >
               Join
             </Button>
           </Link>
           <Card className="mt-3" bg="light">
-            <Card.Header style={{ backgroundColor:`${CARD_COLORS[3]}` }}>
+            <Card.Header style={{ backgroundColor: `${CARD_COLORS[3]}` }}>
               <b>Joined parents</b>
             </Card.Header>
-            <Card.Body style={{ backgroundColor:`${CARD_COLORS[0]}` }}>
+            <Card.Body style={{ backgroundColor: `${CARD_COLORS[0]}` }}>
               <Avatars />
             </Card.Body>
           </Card>
