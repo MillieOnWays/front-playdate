@@ -193,28 +193,25 @@ export default function PlaydateForm() {
                     </Form.Label>
                     <Form.Control
                       as="select"
-                      type="text"
-                      value={tag}
+                      // type="text"
+                      //value={tag}
                       onChange={(e) => setTag(e.target.value)}
                       // placeholder="Give tag e.g. park / water."
                       required
                     >
-                      <option value="" disabled>
-                        Select tag
-                      </option>
-                      <option>park</option>
-                      <option>cinema</option>
-                      <option>zoo</option>
-                      <option>pool</option>
-                      <option>cycling</option>
-                      <option>forest</option>
-                      <option>walking</option>
-                      <option>party</option>
-                      <option>farm</option>
-                      <option>playground</option>
-                      <option>themepark</option>
-                      <option>shopping</option>
-                      <option>N/A</option>
+                      <option value="">Select tag</option>
+                      <option value="park">Park</option>
+                      <option value="cinema">Cinema</option>
+                      <option value="zoo">Zoo</option>
+                      <option value="pool">Pool</option>
+                      <option value="cycling">Cycling</option>
+                      <option value="forest">Forest</option>
+                      <option value="walking">Walking</option>
+                      <option value="party">Party</option>
+                      <option value="farm">Farm</option>
+                      <option value="playground">Playground</option>
+                      <option value="themepark">Themepark</option>
+                      <option value="shopping">Shopping</option>
                     </Form.Control>
                   </Form.Group>
 
