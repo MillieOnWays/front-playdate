@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
 import { login } from "../../store/user/actions";
 import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { Card, Col } from "react-bootstrap";
+import { Card, Col, Form, Button, Container } from "react-bootstrap";
 import "./Login.css";
 
 export default function SignUp() {
@@ -34,11 +31,28 @@ export default function SignUp() {
   return (
     <Container className="mt-5">
       <Card>
-        {/* <Card.Img variant="top" src="../../../images/friends.jpg" /> */}
-        <Card.Header style={{ backgroundColor: "LightPink" }}>
-          <b>Login</b>
+        <Card.Img
+          variant="top"
+          src={
+            "https://nickolausconstruction.com/wp-content/uploads/2018/02/playground-banner.jpg"
+          }
+        />
+        <Card.Header
+          style={{
+            fontSize: "50px",
+            backgroundColor: "LightPink",
+            textAlign: "center",
+          }}
+        >
+          Login
         </Card.Header>
-        <Card.Body style={{ backgroundColor: "pink", textAlign: "center" }}>
+        <Card.Body
+          style={{
+            backgroundColor: "pink",
+            textAlign: "center",
+            minHeight: "500px",
+          }}
+        >
           <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
             <Form.Group controlId="formBasicEmail">
               <Form.Label>
@@ -61,7 +75,7 @@ export default function SignUp() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 type="password"
-                placeholder="Password"
+                placeholder="Enter password"
                 required
               />
             </Form.Group>
@@ -70,7 +84,7 @@ export default function SignUp() {
                 Log in
               </Button>
             </Form.Group>
-            <Form.Group className="mt-3" style={{ marginBottom: "200px" }}>
+            <Form.Group className="mt-3">
               <Link to="/signup" style={{ textAlign: "center" }}>
                 Click here to sign up
               </Link>
