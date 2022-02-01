@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
     case FETCH_PLAYDATES_SUCCESS:
       return {
         ...state,
-        allPlaydates: [...state.allPlaydates, ...action.payload],
+        allPlaydates: action.payload,
       };
     case PLAYDATE_DETAILS_FETCHED:
       return {

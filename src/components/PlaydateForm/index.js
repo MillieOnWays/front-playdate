@@ -12,6 +12,7 @@ import { useState } from "react";
 import { newPlaydate } from "../../store/playdate/actions";
 import { useNavigate } from "react-router-dom";
 import topImg from "../../images/playdate1.jpg";
+import { CARD_COLORS } from "../../config/constants";
 
 export default function PlaydateForm() {
   const navigate = useNavigate();
@@ -57,27 +58,20 @@ export default function PlaydateForm() {
         <Card
           className="mt-5"
           style={{
-            backgroundColor: "#FFB6C1",
             alignSelf: "center",
-            borderWidth: "5px",
           }}
         >
-          <Card.Img
-            variant="top"
-            src={topImg}
-            style={{ width: "100%", height: "14vw" }}
-          />
+          <Card.Img variant="top" src={topImg} style={{ width: "100%" }} />
           <Card.Header
             className="text-center"
             style={{
-              fontWeight: "bold",
+              backgroundColor: `${CARD_COLORS[3]}`,
               fontSize: "30px",
-              fontStyle: "italic",
             }}
           >
             Let's have a Playdate
           </Card.Header>
-          <Card.Body>
+          <Card.Body style={{ backgroundColor: `${CARD_COLORS[0]}` }}>
             <Form onSubmit={submitForm}>
               <Row>
                 <Col sm={6} className="mt-3">
@@ -230,8 +224,8 @@ export default function PlaydateForm() {
                   type="submit"
                   // variant="outline-danger"
                   style={{
-                    backgroundColor: "#F25278",
-                    borderColor: "#F25278",
+                    backgroundColor: `${CARD_COLORS[1]}`,
+                    borderColor: `${CARD_COLORS[3]}`,
                     color: "black",
                     alignSelf: "center",
                     marginLeft: "40%",

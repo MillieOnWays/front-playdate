@@ -1,13 +1,15 @@
 import React from "react";
 import { Card, Form } from "react-bootstrap";
 
+import { CARD_COLORS } from "../../config/constants";
+
 export default function FilterCard(props) {
   return (
     <Card className="mt-3" bg="light" >
-      <Card.Header style={{ backgroundColor: "LightPink" }}>
+      <Card.Header style={{ backgroundColor:`${CARD_COLORS[3]}`}}>
         <b>Filter by</b>
       </Card.Header>
-      <Card.Body style={{ backgroundColor: "pink" }}>
+      <Card.Body style={{ backgroundColor:`${CARD_COLORS[0]}` }}>
         <Form>
           <Form.Group controlId="formBasicSelect">
             <Form.Label>

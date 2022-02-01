@@ -10,6 +10,7 @@ import { selectToken } from "../../store/user/selectors";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "./PlaydateDetails.css";
+import { CARD_COLORS } from "../../config/constants";
 
 export default function PlaydateDetails() {
   const token = useSelector(selectToken);
@@ -35,10 +36,10 @@ export default function PlaydateDetails() {
             </Button>
           </Link>
           <Card className="mt-3" bg="light">
-            <Card.Header style={{ backgroundColor: "LightPink" }}>
+            <Card.Header style={{ backgroundColor:`${CARD_COLORS[3]}` }}>
               <b>Joined parents</b>
             </Card.Header>
-            <Card.Body style={{ backgroundColor: "Pink" }}>
+            <Card.Body style={{ backgroundColor:`${CARD_COLORS[0]}` }}>
               <Avatars />
             </Card.Body>
           </Card>
