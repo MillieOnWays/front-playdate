@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Col, Row, Button } from "react-bootstrap";
-
+import moment from "moment";
 import { useNavigate } from "react-router";
 import { selectPlaydates } from "../../store/playdate/selectors";
 import { selectToken } from "../../store/user/selectors";
@@ -78,6 +78,8 @@ export default function AllPlaydates() {
     setCurrentPlaydates(sorted);
   };
 
+  const currentDay = moment().format("YYYY-MM-DD");
+
   return (
     <Container>
       <Row>
@@ -98,23 +100,27 @@ export default function AllPlaydates() {
         </Col>
 
         <Col sm={9}>
-          {currentPlaydates.map((playdate) => {
-            return (
-              <PlaydateCard
-                key={playdate.id}
-                id={playdate.id}
-                playdateName={playdate.name}
-                description={playdate.description}
-                date={playdate.date}
-                city={playdate.city}
-                tag={playdate.tag}
-                creatorName={playdate.user.name}
-                creatorAvatar={playdate.user.avatar}
-                createdAt={playdate.createdAt}
-                image={playdate.image}
-              />
-            );
-          })}
+          {currentPlaydates
+            .filter((playdate) => {
+              return playdate.date >= currentDay;
+            })
+            .map((playdate) => {
+              return (
+                <PlaydateCard
+                  key={playdate.id}
+                  id={playdate.id}
+                  playdateName={playdate.name}
+                  description={playdate.description}
+                  date={playdate.date}
+                  city={playdate.city}
+                  tag={playdate.tag}
+                  creatorName={playdate.user.name}
+                  creatorAvatar={playdate.user.avatar}
+                  createdAt={playdate.createdAt}
+                  image={playdate.image}
+                />
+              );
+            })}
         </Col>
       </Row>
     </Container>
