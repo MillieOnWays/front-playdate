@@ -26,7 +26,7 @@ export default function Homepage() {
               How ?!!! easy....😃
               <br />
               <div>
-                1:signup🧑🏼‍💻 <br />
+                <a href="/signup">1. signup 🧑🏼‍💻</a> <br />
                 2:create your profile then you are good to go
               </div>
             </h2>
