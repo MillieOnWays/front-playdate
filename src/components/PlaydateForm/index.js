@@ -194,7 +194,7 @@ export default function PlaydateForm() {
                     <Form.Control
                       as="select"
                       // type="text"
-                      value={tag}
+                      //value={tag}
                       onChange={(e) => setTag(e.target.value)}
                       // placeholder="Give tag e.g. park / water."
                       required
