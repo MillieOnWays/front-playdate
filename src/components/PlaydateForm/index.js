@@ -149,9 +149,9 @@ export default function PlaydateForm() {
                     </Form.Label>
                     <Form.Control
                       as="select"
-                      type="text"
+                      // type="text"
                       maxLength={100}
-                      value={city}
+                      //value={city}
                       onChange={(e) => setCity(e.target.value)}
                       required
                     >
