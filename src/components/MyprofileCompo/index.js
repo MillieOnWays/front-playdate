@@ -148,7 +148,7 @@ export default function MyprofileCompo() {
                       plaintext
                       defaultValue={kid.gender}
                       onChange={(event) => setGender(event.target.value)}
-                    />
+                    ></Form.Control>
                   </Form.Group>
                 </td>
                 <td>
@@ -212,10 +212,15 @@ export default function MyprofileCompo() {
                 <td>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
+                      as="select"
                       // plaintext
                       defaultValue=""
                       onChange={(event) => setGender(event.target.value)}
-                    />
+                    >
+                      <option disabled>select gender</option>
+                      <option>f</option>
+                      <option>m</option>
+                    </Form.Control>
                   </Form.Group>
                 </td>
                 <td>
@@ -223,6 +228,7 @@ export default function MyprofileCompo() {
                     <Form.Control
                       // plaintext
                       type="date"
+                      max={new Date().toISOString().split("T")[0]}
                       defaultValue=""
                       onChange={(event) => setBirthDate(event.target.value)}
                     />
@@ -301,16 +307,22 @@ export default function MyprofileCompo() {
                 <td>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
+                      as="select"
                       // plaintext
                       // defaultValue={kid.gender}
                       onChange={(event) => setGender(event.target.value)}
-                    />
+                    >
+                      <option disabled>select gender</option>
+                      <option>f</option>
+                      <option>m</option>
+                    </Form.Control>
                   </Form.Group>
                 </td>
                 <td>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="date"
+                      max={new Date().toISOString().split("T")[0]}
                       // plaintext
                       // defaultValue={kid.birthDate}
                       onChange={(event) => setBirthDate(event.target.value)}
