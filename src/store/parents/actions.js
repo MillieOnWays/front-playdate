@@ -12,6 +12,13 @@ export const fetchParentData = (data) => ({
   payload: data,
 });
 
+export function kidDeleted(id) {
+  return {
+    type: "DELETE_KID",
+    payload: id,
+  };
+}
+
 export const fetchParentWithKids = () => {
   return async (dispatch, getState) => {
     const token = selectToken(getState());
@@ -104,4 +111,15 @@ export const updateKidAction = (
       showMessageWithTimeout("success", false, "The kid is updated!", 3000)
     );
   };
+};
+
+//delete kid
+export const deleteKid = (id) => async (dispatch, getState) => {
+  try {
+    const res = await axios.delete(`${apiUrl}/parent/kids/${id}`);
+    console.log("deleted?", res.data);
+    dispatch(kidDeleted(id));
+  } catch (e) {
+    console.log(e.message);
+  }
 };

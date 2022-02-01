@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectToken, selectUser } from "../../store/user/selectors";
 import { selectAllKids } from "../../store/parents/selectors";
+import { deleteKid } from "../../store/parents/actions";
 import Avatar from "boring-avatars";
 import { AVATAR_COLORS } from "../../config/constants";
 import { CARD_COLORS } from "../../config/constants";
@@ -84,6 +85,10 @@ export default function MyprofileCompo() {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  const kidDelete = (id) => {
+    dispatch(deleteKid(id));
+  };
+
   return (
     <div>
       <Container>
@@ -144,6 +149,7 @@ export default function MyprofileCompo() {
                       {/* <th>
                     <h4>Check for edit</h4>
                   </th> */}
+                      <th>Delete kid</th>
                     </tr>
                   </thead>
 
@@ -201,6 +207,14 @@ export default function MyprofileCompo() {
                             />
                           </Form.Group>
                         </td>
+                        <td>
+                          <Form.Group>
+                            <Button onClick={() => kidDelete(kid.id)}>
+                              {!addRow ? "Delete kid" : "Cancel"}
+                            </Button>
+                          </Form.Group>
+                        </td>
+
                         {/* <td>
                       <Form.Group
                         className="mb-3"
@@ -251,9 +265,9 @@ export default function MyprofileCompo() {
                                 setGender(event.target.value)
                               }
                             >
-                              <option disabled>select gender</option>
-                              <option>f</option>
-                              <option>m</option>
+                              <option value="">select gender</option>
+                              <option value="f">female</option>
+                              <option value="m">male</option>
                             </Form.Control>
                           </Form.Group>
                         </td>
@@ -279,6 +293,7 @@ export default function MyprofileCompo() {
                             />
                           </Form.Group>
                         </td>
+
                         <td>
                           <Button
                             variant="primary"
