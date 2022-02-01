@@ -18,6 +18,7 @@ export default function PlaydateCard(playdate) {
   }
 
   return (
+    
     <Container>
       <Card className="mt-5" bg="light">
         <Card.Header style={{ backgroundColor:`${CARD_COLORS[3]}` }}>

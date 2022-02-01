@@ -192,13 +192,30 @@ export default function PlaydateForm() {
                       <b>Tag</b>
                     </Form.Label>
                     <Form.Control
+                      as="select"
                       type="text"
                       value={tag}
-                      maxLength={25}
                       onChange={(e) => setTag(e.target.value)}
-                      placeholder="Give tag e.g. park / water."
+                      // placeholder="Give tag e.g. park / water."
                       required
-                    />
+                    >
+                      <option value="" disabled>
+                        Select tag
+                      </option>
+                      <option>park</option>
+                      <option>cinema</option>
+                      <option>zoo</option>
+                      <option>pool</option>
+                      <option>cycling</option>
+                      <option>forest</option>
+                      <option>walking</option>
+                      <option>party</option>
+                      <option>farm</option>
+                      <option>playground</option>
+                      <option>themepark</option>
+                      <option>shopping</option>
+                      <option>N/A</option>
+                    </Form.Control>
                   </Form.Group>
 
                   <Form.Group className="mt-3" controlId="formGridDiscription">
