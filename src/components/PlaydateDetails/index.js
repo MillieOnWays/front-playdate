@@ -64,7 +64,7 @@ export default function PlaydateDetailsCard(props) {
                   borderRadius: "25px",
                 }}
               >
-                {tag}
+                {firstLetterUpperCase(tag ? tag : "No Tags")}
               </b>
             </Col>
           </Row>
@@ -92,8 +92,9 @@ export default function PlaydateDetailsCard(props) {
             <p>
               <b>Start Time:</b> {convertedTime(startTime)}
             </p>
+
             <p>
-              <b>End Time:</b> {convertedTime(endTime)}
+              <b>End Time:</b> {endTime ? convertedTime(endTime) : "Not set"}
             </p>
             <p>
               <b>City:</b> {city}
