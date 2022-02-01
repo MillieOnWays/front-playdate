@@ -3,6 +3,7 @@ import { Col, Container, Row, Card } from "react-bootstrap";
 import moment from "moment";
 import Avatar from "boring-avatars";
 import { AVATAR_COLORS } from "../../config/constants";
+import { CARD_COLORS } from "../../config/constants";
 import defaultImage from "../../images/friends.jpg";
 
 export default function PlaydateDetailsCard(props) {
@@ -35,7 +36,7 @@ export default function PlaydateDetailsCard(props) {
   return (
     <Container>
       <Card className="mt-5" bg="light">
-        <Card.Body style={{ backgroundColor: "Pink" }}>
+        <Card.Body style={{ backgroundColor: `${CARD_COLORS[3]}` }}>
           <Row>
             <Col md={3}>
               <Card.Img
@@ -60,20 +61,20 @@ export default function PlaydateDetailsCard(props) {
       </Card>
 
       <Card className="mt-3" bg="light">
-        <Card.Header style={{ backgroundColor: "LightPink" }}>
+        <Card.Header style={{ backgroundColor: `${CARD_COLORS[3]}` }}>
           <b>Description</b>
         </Card.Header>
-        <Card.Body style={{ backgroundColor: "Pink" }}>
+        <Card.Body style={{ backgroundColor: `${CARD_COLORS[0]}` }}>
           <Card.Text>{description}</Card.Text>
         </Card.Body>
       </Card>
 
       <Col>
         <Card className="mt-3" bg="light">
-          <Card.Header style={{ backgroundColor: "LightPink" }}>
+          <Card.Header style={{ backgroundColor: `${CARD_COLORS[3]}` }}>
             <b>Information:</b>
           </Card.Header>
-          <Card.Body style={{ backgroundColor: "Pink" }}>
+          <Card.Body style={{ backgroundColor: `${CARD_COLORS[0]}` }}>
             <p>
               <b>Tag:</b> #{tag}
             </p>

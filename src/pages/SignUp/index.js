@@ -16,7 +16,7 @@ export default function SignUp() {
 
   useEffect(() => {
     if (token !== null) {
-      navigate("/");
+      navigate("/myprofile");
     }
   }, [token, navigate]);
 
