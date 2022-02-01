@@ -39,7 +39,6 @@ export default function AllPlaydates() {
   }, [dispatch, token, navigate]);
 
   useEffect(() => {
-    //console.log("city:", filterCity, "Date", filterDate);
     if (!filterCity && !filterDate) {
       setCurrentPlaydates(playdates);
     } else if (!filterCity && filterDate) {
