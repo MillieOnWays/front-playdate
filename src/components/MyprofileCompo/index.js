@@ -262,12 +262,17 @@ export default function MyprofileCompo() {
                         <td>
                           <Form.Group controlId="formBasicEmail">
                             <Form.Control
+                              as="select"
                               // plaintext
                               defaultValue=""
                               onChange={(event) =>
                                 setGender(event.target.value)
                               }
-                            />
+                            >
+                              <option disabled>select gender</option>
+                              <option>f</option>
+                              <option>m</option>
+                            </Form.Control>
                           </Form.Group>
                         </td>
                         <td>
@@ -276,6 +281,7 @@ export default function MyprofileCompo() {
                               // plaintext
                               type="date"
                               defaultValue=""
+                              max={new Date().toISOString().split("T")[0]}
                               onChange={(event) =>
                                 setBirthDate(event.target.value)
                               }
