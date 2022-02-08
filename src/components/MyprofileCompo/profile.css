@@ -1,0 +1,37 @@
+#profileCompoContainer {
+  animation: apearance 1s ease;
+  animation-fill-mode: backwards;
+  margin: auto;
+  animation-delay: 0.5s;
+}
+
+@keyframes apearance {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#profileCompoButton {
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 150px;
+  transition: 1s;
+  margin: 5px auto;
+}
+
+#profileCompoButton:hover {
+  box-shadow: 0px 0px 10px white, 0px 0px 10px white;
+  transform: scale(1.1);
+}
+
+.validationForm {
+  border: none;
+  cursor: pointer;
+  transition: 1s;
+  display: flex;
+  justify-content: center;
+}

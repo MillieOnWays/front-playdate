@@ -1,10 +1,15 @@
 import React from "react";
 import { Button, Col, Container, Row, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import defaultImage from "../../images/kids-play-ballpit.jpg";
+import defaultImage from "../../images/friends.jpg";
 import moment from "moment";
 import Avatar from "boring-avatars";
-import { AVATAR_COLORS } from "../../config/constants";
+import {
+  AVATAR_COLORS,
+  CARD_COLORS,
+  BUTTON_COLOR,
+} from "../../config/constants";
+import "../../App.css";
 
 export default function PlaydateCard(playdate) {
   function showPlaydateImage(playdateImage) {
@@ -19,7 +24,7 @@ export default function PlaydateCard(playdate) {
   return (
     <Container>
       <Card className="mt-5" bg="light">
-        <Card.Header>
+        <Card.Header style={{ backgroundColor: `${CARD_COLORS[3]}` }}>
           <Row>
             <Col md={4}>
               <b>{firstLetterUpperCase(playdate.playdateName)}</b>
@@ -29,7 +34,7 @@ export default function PlaydateCard(playdate) {
               <b>
                 {playdate.city}
                 {", "}
-                {playdate.date}
+                {moment(playdate.date).format("MMM Do YY")}
               </b>
             </Col>
           </Row>
@@ -41,29 +46,58 @@ export default function PlaydateCard(playdate) {
           <Col md={9}>
             <Card.Body>
               <Card.Text>
-                {firstLetterUpperCase(playdate.description)}
+                {firstLetterUpperCase(playdate.description.slice(0, 200))}
+                {"..."}
               </Card.Text>
             </Card.Body>
           </Col>
         </Row>
 
-        <Card.Footer>
+        <Card.Footer style={{ backgroundColor: `${CARD_COLORS[0]}` }}>
           <Row>
-            <Col className="text-muted">
-              Created by:{" "}
-              <Avatar
-                size={20}
-                name={playdate.creatorName}
-                variant="beam"
-                colors={AVATAR_COLORS}
-              />{" "}
-              <b>{firstLetterUpperCase(playdate.creatorName)}</b>
-              {", "}
-              {moment(playdate.createdAt).startOf("hour").fromNow()}
+            <Col sm={6} className="text-muted" style={{ position: "relative" }}>
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  msTransform: "translateY(-50%)",
+                }}
+              >
+                Created by:{" "}
+                <Avatar
+                  size={20}
+                  name={playdate.creatorName}
+                  variant="beam"
+                  colors={AVATAR_COLORS}
+                />{" "}
+                <b>{firstLetterUpperCase(playdate.creatorName)}</b>
+                {", "}
+                {moment(playdate.createdAt).startOf("hour").fromNow()}
+              </div>
             </Col>
-            <Col md={{ span: 3, offset: 4 }} style={{ textAlign: "right" }}>
+            <Col sm={4} style={{ textAlign: "right" }}>
+              <b
+                style={{
+                  backgroundColor: `${CARD_COLORS[1]}`,
+                  padding: "5px",
+                  borderRadius: "25px",
+                  cursor: "pointer",
+                }}
+              >
+                {firstLetterUpperCase(playdate.tag ? playdate.tag : "No Tags")}
+              </b>
+            </Col>
+            <Col sm={2} style={{ textAlign: "right" }}>
               <Link to={`/playdates/${playdate.id}`}>
-                <Button>Read more</Button>
+                <Button
+                  style={{
+                    backgroundColor: `${BUTTON_COLOR}`,
+                    borderColor: `${BUTTON_COLOR}`,
+                  }}
+                >
+                  Read more
+                </Button>
               </Link>
             </Col>
           </Row>
@@ -72,5 +106,3 @@ export default function PlaydateCard(playdate) {
     </Container>
   );
 }
-
-//style={{ borderColor: "red", borderStyle: "solid" }} FOR CHECKING LAYOUT

@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Col, Row, Button, Card } from "react-bootstrap";
-//import { Next } from "react-bootstrap/esm/PageItem";
+import { Container, Col, Row, Button } from "react-bootstrap";
+import moment from "moment";
+import { useNavigate } from "react-router";
+import { selectPlaydates } from "../../store/playdate/selectors";
+import { selectToken } from "../../store/user/selectors";
+import { BUTTON_COLOR } from "../../config/constants";
 import { Link } from "react-router-dom";
 
-import { selectPlaydates } from "../../store/playdate/selectors";
 import FilterCard from "../../components/AllPlaydates/FilterCard";
 import OrderCard from "../../components/AllPlaydates/OrderCard";
 import PlaydateCard from "../../components/AllPlaydates";
@@ -13,44 +16,117 @@ import { fetchPlaydates } from "../../store/playdate/actions";
 import "./AllPlaydates.css";
 
 export default function AllPlaydates() {
+  const navigate = useNavigate();
+  const token = useSelector(selectToken);
   const dispatch = useDispatch();
   const playdates = useSelector(selectPlaydates);
 
+  const [currentPlaydates, setCurrentPlaydates] = useState(playdates);
+  const [sortToggle, setSortToggle] = useState(false);
+
+  const [filterDate, setFilterDate] = useState("");
+  const [filterCity, setFilterCity] = useState("");
+
   useEffect(() => {
+    setCurrentPlaydates(playdates);
+  }, [playdates]);
+
+  useEffect(() => {
+    if (token === null) {
+      navigate("/");
+    }
     dispatch(fetchPlaydates());
-  }, [dispatch]);
+  }, [dispatch, token, navigate]);
+
+  useEffect(() => {
+    if (!filterCity && !filterDate) {
+      setCurrentPlaydates(playdates);
+    } else if (!filterCity && filterDate) {
+      setCurrentPlaydates(
+        playdates.filter((playdate) => {
+          return filterDate === playdate.date;
+        })
+      );
+    } else if (filterCity && !filterDate) {
+      setCurrentPlaydates(
+        playdates.filter((playdate) => filterCity === playdate.city)
+      );
+    } else {
+      setCurrentPlaydates(
+        playdates.filter(
+          (playdate) =>
+            filterDate === playdate.date && filterCity === playdate.city
+        )
+      );
+    }
+  }, [filterCity, filterDate]);
+
+  const sortPlaydatesBy = () => {
+    const playdatesCopy = [...currentPlaydates];
+
+    const sorted = playdatesCopy.sort(function (a, b) {
+      const aDate = new Date(a.date);
+      const bDate = new Date(b.date);
+
+      const asc = aDate - bDate;
+      const desc = bDate - aDate;
+
+      return sortToggle ? asc : desc;
+    });
+    setSortToggle(!sortToggle);
+    setCurrentPlaydates(sorted);
+  };
+
+  const currentDay = moment().format("YYYY-MM-DD");
 
   return (
     <Container>
       <Row>
-        <Col sm={2}>
+        <Col sm={3}>
           <Link to={`/playdateForm`}>
-            <Button className="mt-5" style={{ width: "100%" }}>
+            <Button
+              className="mt-5"
+              style={{
+                width: "100%",
+                backgroundColor: `${BUTTON_COLOR}`,
+                borderColor: `${BUTTON_COLOR}`,
+              }}
+            >
               Create Playdate
             </Button>
           </Link>
 
-          <OrderCard />
-          <FilterCard />
+          <OrderCard sortPlaydatesBy={sortPlaydatesBy} toggle={sortToggle} />
+          <FilterCard
+            filterCity={filterCity}
+            filterDate={filterDate}
+            setFilterCity={setFilterCity}
+            setFilterDate={setFilterDate}
+          />
         </Col>
-        <Col sm={8}>
-          {playdates.map((playdate) => {
-            return (
-              <PlaydateCard
-                key={playdate.id}
-                id={playdate.id}
-                playdateName={playdate.name}
-                description={playdate.description}
-                date={playdate.date}
-                city={playdate.city}
-                tag={playdate.tag}
-                creatorName={playdate.user.name}
-                creatorAvatar={playdate.user.avatar}
-                createdAt={playdate.createdAt}
-                image={playdate.image}
-              />
-            );
-          })}
+
+        <Col sm={9}>
+          {currentPlaydates
+            .filter((playdate) => {
+              return playdate.date >= currentDay;
+            })
+            .map((playdate) => {
+              return (
+                <PlaydateCard
+                  key={playdate.id}
+                  id={playdate.id}
+                  playdateName={playdate.name}
+                  description={playdate.description}
+                  date={playdate.date}
+                  city={playdate.city}
+                  tag={playdate.tag}
+                  creatorName={playdate.user.name}
+                  creatorAvatar={playdate.user.avatar}
+                  createdAt={playdate.createdAt}
+                  image={playdate.image}
+                />
+              );
+            })}
         </Col>
       </Row>
     </Container>
